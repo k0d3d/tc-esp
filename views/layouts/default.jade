@@ -1,0 +1,35 @@
+doctype html
+//if IE 8
+  html.no-js.lt-ie9
+//if IE 9
+  html.no-js.lt-ie10
+// [if gt IE 8] <!
+html.no-js
+  // <![endif]
+  head
+    block head
+      include ../includes/head-assets.jade
+  body(ng-app="tagChiefStatsApp")
+    #page-container.sidebar-partial.sidebar-visible-lg.sidebar-no-animations.header-fixed-top(ng-controller="main")
+      block sidebar
+        include ../includes/sidebar.jade
+
+      // Main Container
+      #main-container
+
+        header.navbar.navbar-fixed-top.navbar-default
+
+
+        block page
+
+    // END Page Container
+    // Scroll to top link, initialized in js/app.js - scrollToTop()
+    a#to-top(href='#')
+      i.fa.fa-angle-double-up
+    // User Settings, modal which opens from Settings link (found in top right user menu) and the Cog link (found in sidebar user info)
+    block modal_skin
+      include ../includes/modal-skin.jade
+    // END User Settings
+    // Remember to include excanvas for IE8 chart support
+    block foot_assets
+      include ../includes/foot-assets.jade

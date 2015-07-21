@@ -1,0 +1,74 @@
+// Page content
+#page-content
+  // Contacts Header
+  .content-header
+    .header-section
+      h1
+        i.gi.gi-parents
+        | {{one_place_checkin[0].locationId.name || 'Unknown'}}
+        br
+        small {{one_place_checkin[0].locationId.description}}
+
+  // END Contacts Header
+  // Main Row
+  .row
+    .block
+      .table-responsive
+        //
+          Available Table Classes:
+          'table'             - basic table
+          'table-bordered'    - table with full borders
+          'table-borderless'  - table with no borders
+          'table-striped'     - striped table
+          'table-condensed'   - table with smaller top and bottom cell padding
+          'table-hover'       - rows highlighted on mouse hover
+          'table-vcenter'     - middle align content vertically
+        table#general-table.table.table-striped.table-vcenter
+          thead
+            tr
+              th.text-center(style='width: 80px;')
+                input(type='checkbox')
+              th.text-center(style='width: 150px;')
+                i.gi.gi-user
+              th User
+              th CheckInTime
+              th Activities
+          tbody
+            tr(ng-repeat="place in one_place_checkin")
+              td.text-center
+                input#checkbox1-1(type='checkbox', name='checkbox1-1')
+              td.text-center
+                img.img-circle(src='img/placeholders/avatars/avatar16.jpg', alt='avatar')
+              td
+                a(href='') {{place.userId.firstname}} {{place.userId.lastname}}
+              td {{place.checkInTime | date:'medium'}}
+              td
+
+
+
+          tfoot
+            tr
+              td(colspan='6')
+                .btn-group.btn-group-sm.pull-right
+                  a.btn.btn-primary(href='javascript:void(0)', data-toggle='tooltip', title='', data-original-title='Settings')
+                    i.fa.fa-cog
+                  .btn-group.btn-group-sm.dropup
+                    a.btn.btn-primary.pull-right.dropdown-toggle(href='javascript:void(0)', data-toggle='dropdown')
+                      span.caret
+                    ul.dropdown-menu.dropdown-custom.dropdown-menu-right
+                      li
+                        a(href='javascript:void(0)')
+                          i.fa.fa-print.pull-right
+                          |  Print
+                      li.dropdown-header
+                        i.fa.fa-share.pull-right
+                        |  Export As
+                      li
+                        a(href='javascript:void(0)') .pdf
+                        a(href='javascript:void(0)') .cvs
+                .btn-group.btn-group-sm
+                  a.btn.btn-primary(href='javascript:void(0)', data-toggle='tooltip', title='', data-original-title='Edit Selected')
+                    i.fa.fa-pencil
+                  a.btn.btn-primary(href='javascript:void(0)', data-toggle='tooltip', title='', data-original-title='Delete Selected')
+                    i.fa.fa-times
+      // END Table Styles Content

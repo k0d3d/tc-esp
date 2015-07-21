@@ -1,0 +1,171 @@
+// Alternative Sidebar
+#sidebar-alt
+  // Wrapper for scrolling functionality
+  .sidebar-scroll
+    // Sidebar Content
+    .sidebar-content
+      // Chat
+      // Chat demo functionality initialized in js/app.js -> chatUi()
+      a.sidebar-title(href='page_ready_chat.html')
+        i.gi.gi-comments.pull-right
+        strong Chat
+        | UI
+      // Chat Users
+      ul.chat-users.clearfix
+        li
+          a.chat-user-online(href='javascript:void(0)')
+            span
+            img.img-circle(src='img/placeholders/avatars/avatar12.jpg', alt='avatar')
+        li
+          a.chat-user-online(href='javascript:void(0)')
+            span
+            img.img-circle(src='img/placeholders/avatars/avatar15.jpg', alt='avatar')
+        li
+          a.chat-user-online(href='javascript:void(0)')
+            span
+            img.img-circle(src='img/placeholders/avatars/avatar10.jpg', alt='avatar')
+        li
+          a.chat-user-online(href='javascript:void(0)')
+            span
+            img.img-circle(src='img/placeholders/avatars/avatar4.jpg', alt='avatar')
+        li
+          a.chat-user-away(href='javascript:void(0)')
+            span
+            img.img-circle(src='img/placeholders/avatars/avatar7.jpg', alt='avatar')
+        li
+          a.chat-user-away(href='javascript:void(0)')
+            span
+            img.img-circle(src='img/placeholders/avatars/avatar9.jpg', alt='avatar')
+        li
+          a.chat-user-busy(href='javascript:void(0)')
+            span
+            img.img-circle(src='img/placeholders/avatars/avatar16.jpg', alt='avatar')
+        li
+          a(href='javascript:void(0)')
+            span
+            img.img-circle(src='img/placeholders/avatars/avatar1.jpg', alt='avatar')
+        li
+          a(href='javascript:void(0)')
+            span
+            img.img-circle(src='img/placeholders/avatars/avatar4.jpg', alt='avatar')
+        li
+          a(href='javascript:void(0)')
+            span
+            img.img-circle(src='img/placeholders/avatars/avatar3.jpg', alt='avatar')
+        li
+          a(href='javascript:void(0)')
+            span
+            img.img-circle(src='img/placeholders/avatars/avatar13.jpg', alt='avatar')
+        li
+          a(href='javascript:void(0)')
+            span
+            img.img-circle(src='img/placeholders/avatars/avatar5.jpg', alt='avatar')
+      // END Chat Users
+      // Chat Talk
+      .chat-talk.display-none
+        // Chat Info
+        .chat-talk-info.sidebar-section
+          img.img-circle.pull-left(src='img/placeholders/avatars/avatar5.jpg', alt='avatar')
+          strong John
+          |  Doe
+          button#chat-talk-close-btn.btn.btn-xs.btn-default.pull-right
+            i.fa.fa-times
+        // END Chat Info
+        // Chat Messages
+        ul.chat-talk-messages
+          li.text-center
+            small Yesterday, 18:35
+          li.chat-talk-msg.animation-slideRight Hey admin?
+          li.chat-talk-msg.animation-slideRight How are you?
+          li.text-center
+            small Today, 7:10
+          li.chat-talk-msg.chat-talk-msg-highlight.themed-border.animation-slideLeft I'm fine, thanks!
+        // END Chat Messages
+        // Chat Input
+        form#sidebar-chat-form.chat-form(action='index.html', method='post')
+          input#sidebar-chat-message.form-control.form-control-borderless(type='text', name='sidebar-chat-message', placeholder='Type a message..')
+        // END Chat Input
+      // END Chat Talk
+      // END Chat
+      // Activity
+      a.sidebar-title(href='javascript:void(0)')
+        i.fa.fa-globe.pull-right
+        strong Activity
+        | UI
+      .sidebar-section
+        .alert.alert-danger.alert-alt
+          small just now
+          br
+          i.fa.fa-thumbs-up.fa-fw
+          |  Upgraded to Pro plan
+        .alert.alert-info.alert-alt
+          small 2 hours ago
+          br
+          i.gi.gi-coins.fa-fw
+          |  You had a new sale!
+        .alert.alert-success.alert-alt
+          small 3 hours ago
+          br
+          i.fa.fa-plus.fa-fw
+          a(href='page_ready_user_profile.html')
+            strong John Doe
+          |  would like to become friends!
+          br
+          a.btn.btn-xs.btn-primary(href='javascript:void(0)')
+            i.fa.fa-check
+            |  Accept
+          a.btn.btn-xs.btn-default(href='javascript:void(0)')
+            i.fa.fa-times
+            |  Ignore
+        .alert.alert-warning.alert-alt
+          small 2 days ago
+          br
+          |                                 Running low on space
+          br
+          strong 18GB in use
+          |  2GB left
+          br
+          a.btn.btn-xs.btn-primary(href='page_ready_pricing_tables.html')
+            i.fa.fa-arrow-up
+            |  Upgrade Plan
+      // END Activity
+      // Messages
+      a.sidebar-title(href='page_ready_inbox.html')
+        i.fa.fa-envelope.pull-right
+        strong Messages
+        | UI (5)
+      .sidebar-section
+        .alert.alert-alt
+          | Debra Stanley
+          small.pull-right just now
+          br
+          a(href='page_ready_inbox_message.html')
+            strong New Follower
+        .alert.alert-alt
+          | Sarah Cole
+          small.pull-right 2 min ago
+          br
+          a(href='page_ready_inbox_message.html')
+            strong Your subscription was updated
+        .alert.alert-alt
+          | Bryan Porter
+          small.pull-right 10 min ago
+          br
+          a(href='page_ready_inbox_message.html')
+            strong A great opportunity
+        .alert.alert-alt
+          | Jose Duncan
+          small.pull-right 30 min ago
+          br
+          a(href='page_ready_inbox_message.html')
+            strong Account Activation
+        .alert.alert-alt
+          | Henry Ellis
+          small.pull-right 40 min ago
+          br
+          a(href='page_ready_inbox_message.html')
+            strong You reached 10.000 Followers!
+      // END Messages
+    // END Sidebar Content
+  // END Wrapper for scrolling functionality
+// END Alternative Sidebar

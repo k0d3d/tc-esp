@@ -1,0 +1,45 @@
+block page
+  // Register Form
+  form#form-register.form-horizontal.form-bordered.form-control-borderless.display-none(action='login.html#register', method='post')
+    .form-group
+      .col-xs-6
+        .input-group
+          span.input-group-addon
+            i.gi.gi-user
+          input#register-firstname.form-control.input-lg(type='text', name='register-firstname', placeholder='Firstname')
+      .col-xs-6
+        input#register-lastname.form-control.input-lg(type='text', name='register-lastname', placeholder='Lastname')
+    .form-group
+      .col-xs-12
+        .input-group
+          span.input-group-addon
+            i.gi.gi-envelope
+          input#register-email.form-control.input-lg(type='text', name='register-email', placeholder='Email')
+    .form-group
+      .col-xs-12
+        .input-group
+          span.input-group-addon
+            i.gi.gi-asterisk
+          input#register-password.form-control.input-lg(type='password', name='register-password', placeholder='Password')
+    .form-group
+      .col-xs-12
+        .input-group
+          span.input-group-addon
+            i.gi.gi-asterisk
+          input#register-password-verify.form-control.input-lg(type='password', name='register-password-verify', placeholder='Verify Password')
+    .form-group.form-actions
+      .col-xs-6
+        a.register-terms(href='#modal-terms', data-toggle='modal') Terms
+        label.switch.switch-primary(data-toggle='tooltip', title='Agree to the terms')
+          input#register-terms(type='checkbox', name='register-terms')
+          span
+      .col-xs-6.text-right
+        button.btn.btn-sm.btn-success(type='submit')
+          i.fa.fa-plus
+          |  Register Account
+    .form-group
+      .col-xs-12.text-center
+        small Do you have an account?
+        a#link-register(href='javascript:void(0)')
+          small Login
+  // END Register Form

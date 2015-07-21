@@ -1,0 +1,126 @@
+// Page content
+#page-content
+  // Contacts Header
+  .content-header
+    .header-section
+      h1
+        i.gi.gi-parents
+        | Users
+        br
+        small Manage all your tagChief Users!
+  ul.breadcrumb.breadcrumb-top
+    li Pages
+    li
+      a(href='') Contacts
+  // END Contacts Header
+  // Main Row
+  .row
+    .col-lg-8
+      // Contacts Block
+      .block
+        // Contacts Title
+        .block-title
+          .block-options.text-center
+            a.btn.btn-sm.btn-alt.btn-default(href='javascript:void(0)') A
+            a.btn.btn-sm.btn-alt.btn-default(href='javascript:void(0)') B
+            a.btn.btn-sm.btn-alt.btn-default(href='javascript:void(0)') C
+            a.btn.btn-sm.btn-alt.btn-default(href='javascript:void(0)') D
+            a.btn.btn-sm.btn-alt.btn-default(href='javascript:void(0)') E
+            a.btn.btn-sm.btn-alt.btn-default(href='javascript:void(0)') F
+            a.btn.btn-sm.btn-alt.btn-default(href='javascript:void(0)') G
+            a.btn.btn-sm.btn-alt.btn-default(href='javascript:void(0)') H
+            a.btn.btn-sm.btn-alt.btn-default(href='javascript:void(0)') I
+            a.btn.btn-sm.btn-alt.btn-default(href='javascript:void(0)') J
+            a.btn.btn-sm.btn-alt.btn-default(href='javascript:void(0)') K
+            a.btn.btn-sm.btn-alt.btn-default(href='javascript:void(0)') L
+            a.btn.btn-sm.btn-alt.btn-default(href='javascript:void(0)') M
+            a.btn.btn-sm.btn-alt.btn-default(href='javascript:void(0)') N
+            a.btn.btn-sm.btn-alt.btn-default(href='javascript:void(0)') O
+            a.btn.btn-sm.btn-alt.btn-default(href='javascript:void(0)') P
+            a.btn.btn-sm.btn-alt.btn-default(href='javascript:void(0)') Q
+            a.btn.btn-sm.btn-alt.btn-default(href='javascript:void(0)') R
+            a.btn.btn-sm.btn-alt.btn-default(href='javascript:void(0)') S
+            a.btn.btn-sm.btn-alt.btn-default(href='javascript:void(0)') T
+            a.btn.btn-sm.btn-alt.btn-default(href='javascript:void(0)') V
+            a.btn.btn-sm.btn-alt.btn-default(href='javascript:void(0)') U
+            a.btn.btn-sm.btn-alt.btn-default(href='javascript:void(0)') W
+            a.btn.btn-sm.btn-alt.btn-default(href='javascript:void(0)') X
+            a.btn.btn-sm.btn-alt.btn-default(href='javascript:void(0)') Y
+            a.btn.btn-sm.btn-alt.btn-default(href='javascript:void(0)') Z
+        // END Contacts Title
+        // Contacts Content
+        .row.style-alt
+          // Contact Widget
+          .col-sm-6.col-lg-4(ng-repeat="user in users_list")
+            .widget
+              .widget-simple
+                a(href='page_ready_user_profile.html')
+                  img.widget-image.img-circle.pull-left.animation-fadeIn(src='img/placeholders/avatars/avatar2.jpg', alt='avatar')
+                h4.widget-content.text-right
+                  a(href='page_ready_user_profile.html')
+                    strong {{user.firstname || 'None'}} {{user.lastname || 'None'}}
+                  br
+                  span.btn-group
+                    a.btn.btn-xs.btn-default(href='javascript:void(0)', data-toggle='tooltip', title='Phone Number') {{user.phoneNumber}}
+                    a.btn.btn-xs.btn-primary(href='javascript:void(0)', data-toggle='tooltip', title='Edit', ng-click="manageUser(user)")
+                      i.fa.fa-pencil
+          // END Contact Widget
+
+
+        // END Contacts Content
+      // END Contacts Block
+    .col-lg-4
+      // Edit Contact Block
+      .block
+        // Edit Contact Title
+        .block-title
+          .block-options.pull-right
+            a.btn.btn-sm.btn-alt.btn-danger.enable-tooltip(href='javascript:void(0)', data-toggle='block-hide', title='Remove')
+              i.fa.fa-times
+          h2
+            i.fa.fa-pencil
+            |  John Doe
+        // END Edit Contact Title
+        // Edit Contact Content
+        form.form-bordered(ng-submit="")
+          .form-group
+            label.control-label
+              img.img-circle(src='img/placeholders/avatars/avatar2.jpg', alt='avatar')
+            .col-xs-9
+              i.fa.fa-fw.fa-upload
+              a(href='javascript:void(0)') Upload New Avatar
+              br
+              i.fa.fa-fw.fa-upload
+              a(href='', title="Number of  Tagged Locations") {{isInView.lastTaggedLocation.length}}  Tagged Locations
+              br
+              br
+          .form-group
+            label.control-label(for='edit-contact-name') First Name
+            input#edit-contact-name.form-control(type='text', name='edit-contact-name', placeholder='Full Name..', ng-model="isInView.firstname")
+            label.control-label(for='edit-contact-name') Last Name
+            input#edit-contact-name.form-control(type='text', name='edit-contact-name', placeholder='Last Name..', ng-model="isInView.lastname")
+          .form-group
+            label.control-label(for='edit-contact-email') Email
+            input#edit-contact-email.form-control(type='email', name='edit-contact-email', placeholder='Enter Email..', ng-model="isInView.email")
+          .form-group
+            label.control-label(for='edit-contact-phone') Phone
+            input#edit-contact-phone.form-control(type='text', name='edit-contact-phone', placeholder='(000) 000-0000', ng-model="isInView.phoneNumber")
+          .form-group
+            label.control-label(for='edit-contact-mobile') Mobile
+            input#edit-contact-mobile.form-control(type='text', name='edit-contact-mobile', placeholder='Enter Mobile Number..')
+          .form-group
+            label.control-label(for='edit-contact-address') Last Seen At
+            p#edit-contact-address.form-control-static {{isInView.lastSeenAt.coords[0]}},  {{isInView.lastSeenAt.coords[1]}}
+          .form-group
+            label.control-label(for='edit-contact-address') Last Seen On
+            p#edit-contact-address.form-control-static {{isInView.lastSeenAt.timeTag | date:'medium'}}
+
+          .form-group.form-actions
+              button.btn.btn-sm.btn-primary(type='submit')
+                i.fa.fa-check
+                |  Save Changes
+        // END Edit Contact Content
+      // END Edit Contact Block
+
+  // END Main Row
+// END Page Content

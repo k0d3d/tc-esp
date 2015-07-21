@@ -1,0 +1,20 @@
+block page
+  // Reminder Form
+  form#form-reminder.form-horizontal.form-bordered.form-control-borderless.display-none(action='login.html#reminder', method='post')
+    .form-group
+      .col-xs-12
+        .input-group
+          span.input-group-addon
+            i.gi.gi-envelope
+          input#reminder-email.form-control.input-lg(type='text', name='reminder-email', placeholder='Email')
+    .form-group.form-actions
+      .col-xs-12.text-right
+        button.btn.btn-sm.btn-primary(type='submit')
+          i.fa.fa-angle-right
+          |  Reset Password
+    .form-group
+      .col-xs-12.text-center
+        small Did you remember your password?
+        a#link-reminder(href='javascript:void(0)')
+          small Login
+  // END Reminder Form

@@ -1,0 +1,33 @@
+extends ../layouts/wide.jade
+
+block page
+  // Login Form
+  form#form-login.form-horizontal.form-bordered.form-control-borderless(action='/login', method='post')
+    .form-group
+      .col-xs-12
+        .input-group
+          span.input-group-addon
+            i.gi.gi-envelope
+          input#login-email.form-control.input-lg(type='text', name='email', placeholder='Email', value=email)
+    .form-group
+      .col-xs-12
+        .input-group
+          span.input-group-addon
+            i.gi.gi-asterisk
+          input#login-password.form-control.input-lg(type='password', name='password', placeholder='Password')
+    .form-group.form-actions
+      .col-xs-4
+        label.switch.switch-danger(data-toggle='tooltip', title='Remember Me?')
+          input#login-remember-me(type='checkbox', name='login-remember-me', checked='')
+          span
+      .col-xs-8.text-right
+        button.btn.btn-sm.btn-danger(type='submit')
+          i.fa.fa-angle-right
+          |  Login to Dashboard
+    .form-group
+      .col-xs-12.text-center
+        a#link-reminder-login(href='javascript:void(0)')
+          small Forgot password?
+        |  -
+
+  // END Login Form

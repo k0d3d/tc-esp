@@ -1,0 +1,416 @@
+#page-content
+  // Dashboard Header
+  // For an image header add the class 'content-header-media' and an image as in the following example
+  .content-header.content-header-media
+    .header-section
+      .row
+        // Main Title (hidden on small devices for the statistics to fit)
+        .col-md-4.col-lg-6.hidden-xs.hidden-sm
+          h1
+            | Welcome
+            strong Admin
+            br
+            small You Look Awesome!
+        // END Main Title
+        // Top Stats
+        .col-md-8.col-lg-6
+          .row.text-center
+            .col-xs-4.col-sm-3
+              h2.animation-hatch
+                | $
+                strong 93.7k
+                br
+                small
+                  i.fa.fa-thumbs-o-up
+                  |  Great
+            .col-xs-4.col-sm-3
+              h2.animation-hatch
+                strong 167k
+                br
+                small
+                  i.fa.fa-heart-o
+                  |  Likes
+            .col-xs-4.col-sm-3
+              h2.animation-hatch
+                strong 101
+                br
+                small
+                  i.fa.fa-calendar-o
+                  |  Events
+            // We hide the last stat to fit the other 3 on small devices
+            .col-sm-3.hidden-xs
+              h2.animation-hatch
+                strong 27° C
+                br
+                small
+                  i.fa.fa-map-marker
+                  |  Sydney
+        // END Top Stats
+    // For best results use an image with a resolution of 2560x248 pixels (You can also use a blurred image with ratio 10:1 - eg: 1000x100 pixels - it will adjust and look great!)
+    img.animation-pulseSlow(src='img/placeholders/headers/dashboard_header.jpg', alt='header image')
+  // END Dashboard Header
+  // Mini Top Stats Row
+  .row
+    .col-sm-6.col-lg-3
+      // Widget
+      a.widget.widget-hover-effect1(href='page_ready_article.html')
+        .widget-simple
+          .widget-icon.pull-left.themed-background-autumn.animation-fadeIn
+            i.fa.fa-file-text
+          h3.widget-content.text-right.animation-pullDown
+            | New
+            strong Article
+            br
+            small Mountain Trip
+      // END Widget
+    .col-sm-6.col-lg-3
+      // Widget
+      a.widget.widget-hover-effect1(href='page_comp_charts.html')
+        .widget-simple
+          .widget-icon.pull-left.themed-background-spring.animation-fadeIn
+            i.gi.gi-usd
+          h3.widget-content.text-right.animation-pullDown
+            | +
+            strong 250%
+            br
+            small Sales Today
+      // END Widget
+    .col-sm-6.col-lg-3
+      // Widget
+      a.widget.widget-hover-effect1(href='page_ready_inbox.html')
+        .widget-simple
+          .widget-icon.pull-left.themed-background-fire.animation-fadeIn
+            i.gi.gi-envelope
+          h3.widget-content.text-right.animation-pullDown
+            | 5
+            strong Messages
+            small Support Center
+      // END Widget
+    .col-sm-6.col-lg-3
+      // Widget
+      a.widget.widget-hover-effect1(href='page_comp_gallery.html')
+        .widget-simple
+          .widget-icon.pull-left.themed-background-amethyst.animation-fadeIn
+            i.gi.gi-picture
+          h3.widget-content.text-right.animation-pullDown
+            | +30
+            strong Photos
+            small Gallery
+      // END Widget
+    .col-sm-6
+      // Widget
+      a.widget.widget-hover-effect1(href='page_comp_charts.html')
+        .widget-simple
+          .widget-icon.pull-left.themed-background.animation-fadeIn
+            i.gi.gi-wallet
+          .pull-right
+            // Jquery Sparkline (initialized in js/pages/index.js), for more examples you can check out http://omnipotent.net/jquery.sparkline/#s-about
+            span#mini-chart-sales
+          h3.widget-content.animation-pullDown.visible-lg
+            | Latest
+            strong Sales
+            small Per hour
+      // END Widget
+    .col-sm-6
+      // Widget
+      a.widget.widget-hover-effect1(href='page_widgets_stats.html')
+        .widget-simple
+          .widget-icon.pull-left.themed-background.animation-fadeIn
+            i.gi.gi-crown
+          .pull-right
+            // Jquery Sparkline (initialized in js/pages/index.js), for more examples you can check out http://omnipotent.net/jquery.sparkline/#s-about
+            span#mini-chart-brand
+          h3.widget-content.animation-pullDown.visible-lg
+            | Our
+            strong Brand
+            small Popularity over time
+      // END Widget
+  // END Mini Top Stats Row
+  // Widgets Row
+  .row
+    .col-md-6
+      // Timeline Widget
+      .widget
+        .widget-extra.themed-background-dark
+          .widget-options
+            .btn-group.btn-group-xs
+              a.btn.btn-default(href='javascript:void(0)', data-toggle='tooltip', title='Edit Widget')
+                i.fa.fa-pencil
+              a.btn.btn-default(href='javascript:void(0)', data-toggle='tooltip', title='Quick Settings')
+                i.fa.fa-cog
+          h3.widget-content-light
+            | Latest
+            strong News
+            small
+              a(href='page_ready_timeline.html')
+                strong View all
+        .widget-extra
+          // Timeline Content
+          .timeline
+            ul.timeline-list
+              li.active
+                .timeline-icon
+                  i.gi.gi-airplane
+                .timeline-time
+                  small just now
+                .timeline-content
+                  p.push-bit
+                    a(href='page_ready_user_profile.html')
+                      strong Jordan Carter
+                  p.push-bit The trip was an amazing and a life changing experience!!
+                  p.push-bit
+                    a.btn.btn-xs.btn-primary(href='page_ready_article.html')
+                      i.fa.fa-file
+                      |  Read the article
+                  .row.push
+                    .col-sm-6.col-md-4
+                      a(href='img/placeholders/photos/photo1.jpg', data-toggle='lightbox-image')
+                        img(src='img/placeholders/photos/photo1.jpg', alt='image')
+                    .col-sm-6.col-md-4
+                      a(href='img/placeholders/photos/photo22.jpg', data-toggle='lightbox-image')
+                        img(src='img/placeholders/photos/photo22.jpg', alt='image')
+              li.active
+                .timeline-icon.themed-background-fire.themed-border-fire
+                  i.fa.fa-file-text
+                .timeline-time
+                  small 5 min ago
+                .timeline-content
+                  p.push-bit
+                    a(href='page_ready_user_profile.html')
+                      strong Administrator
+                  strong Free courses
+                  |  for all our customers at A1 Conference Room - 9:00
+                  strong am
+                  |  tomorrow!
+              li.active
+                .timeline-icon
+                  i.gi.gi-drink
+                .timeline-time
+                  small 3 hours ago
+                .timeline-content
+                  p.push-bit
+                    a(href='page_ready_user_profile.html')
+                      strong Ella Winter
+                  p.push-bit
+                    strong Happy Hour!
+                    |  Free drinks at
+                    a(href='javascript:void(0)') Cafe-Bar
+                    |  all day long!
+                  #gmap-timeline.gmap
+              li.active
+                .timeline-icon
+                  i.fa.fa-cutlery
+                .timeline-time
+                  small yesterday
+                .timeline-content
+                  p.push-bit
+                    a(href='page_ready_user_profile.html')
+                      strong Patricia Woods
+                  p.push-bit Today I had the lunch of my life! It was delicious!
+                  .row.push
+                    .col-sm-6.col-md-4
+                      a(href='img/placeholders/photos/photo23.jpg', data-toggle='lightbox-image')
+                        img(src='img/placeholders/photos/photo23.jpg', alt='image')
+              li.active
+                .timeline-icon.themed-background-fire.themed-border-fire
+                  i.fa.fa-smile-o
+                .timeline-time
+                  small 2 days ago
+                .timeline-content
+                  p.push-bit
+                    a(href='page_ready_user_profile.html')
+                      strong Administrator
+                  |                                                     To thank you all for your support we would like to let you know that you will receive free feature updates for life! You are awesome!
+              li.active
+                .timeline-icon
+                  i.fa.fa-pencil
+                .timeline-time
+                  small 1 week ago
+                .timeline-content
+                  p.push-bit
+                    a(href='page_ready_user_profile.html')
+                      strong Nicole Ward
+                  p.push-bit
+                    | Consectetur adipiscing elit. Maecenas ultrices, justo vel imperdiet gravida, urna ligula hendrerit nibh, ac cursus nibh sapien in purus. Mauris tincidunt tincidunt turpis in porta. Integer fermentum tincidunt auctor. Vestibulum ullamcorper, odio sed rhoncus imperdiet, enim elit sollicitudin orci, eget dictum leo mi nec lectus. Nam commodo turpis id lectus scelerisque vulputate.
+                  |                                                     Integer sed dolor erat. Fusce erat ipsum, varius vel euismod sed, tristique et lectus? Etiam egestas fringilla enim, id convallis lectus laoreet at. Fusce purus nisi, gravida sed consectetur ut, interdum quis nisi. Quisque egestas nisl id lectus facilisis scelerisque? Proin rhoncus dui at ligula vestibulum ut facilisis ante sodales! Suspendisse potenti. Aliquam tincidunt sollicitudin sem nec ultrices. Sed at mi velit. Ut egestas tempor est, in cursus enim venenatis eget! Nulla quis ligula ipsum.
+              li.text-center
+                a.btn.btn-xs.btn-default(href='javascript:void(0)') View more..
+          // END Timeline Content
+      // END Timeline Widget
+    .col-md-6
+      // Your Plan Widget
+      .widget
+        .widget-extra.themed-background-dark
+          .widget-options
+            .btn-group.btn-group-xs
+              a.btn.btn-default(href='javascript:void(0)', data-toggle='tooltip', title='Edit Widget')
+                i.fa.fa-pencil
+              a.btn.btn-default(href='javascript:void(0)', data-toggle='tooltip', title='Quick Settings')
+                i.fa.fa-cog
+          h3.widget-content-light
+            | Your
+            strong VIP Plan
+            small
+              a(href='page_ready_pricing_tables.html')
+                strong Upgrade
+        .widget-extra-full
+          .row.text-center
+            .col-xs-6.col-lg-3
+              h3
+                strong 35
+                small /50
+                br
+                small
+                  i.fa.fa-folder-open-o
+                  |  Projects
+            .col-xs-6.col-lg-3
+              h3
+                strong 25
+                small /100GB
+                br
+                small
+                  i.fa.fa-hdd-o
+                  |  Storage
+            .col-xs-6.col-lg-3
+              h3
+                strong 65
+                small /1k
+                br
+                small
+                  i.fa.fa-building-o
+                  |  Clients
+            .col-xs-6.col-lg-3
+              h3
+                strong 10
+                small k
+                br
+                small
+                  i.fa.fa-envelope-o
+                  |  Emails
+      // END Your Plan Widget
+      // Charts Widget
+      .widget
+        .widget-advanced.widget-advanced-alt
+          // Widget Header
+          .widget-header.text-center.themed-background
+            h3.widget-content-light.text-left.pull-left.animation-pullDown
+              strong Sales
+              |  &
+              strong Earnings
+              br
+              small Last Year
+            // Flot Charts (initialized in js/pages/index.js), for more examples you can check out http://www.flotcharts.org/
+            #dash-widget-chart.chart
+          // END Widget Header
+          // Widget Main
+          .widget-main
+            .row.text-center
+              .col-xs-4
+                h3.animation-hatch
+                  strong 7.500
+                  br
+                  small Clients
+              .col-xs-4
+                h3.animation-hatch
+                  strong 10.970
+                  br
+                  small Sales
+              .col-xs-4
+                h3.animation-hatch
+                  | $
+                  strong 31.230
+                  br
+                  small Earnings
+          // END Widget Main
+      // END Charts Widget
+      // Weather Widget
+      .widget
+        .widget-advanced.widget-advanced-alt
+          // Widget Header
+          .widget-header.text-left
+            // For best results use an image with at least 150 pixels in height (with the width relative to how big your widget will be!) - Here I'm using a 1200x150 pixels image
+            img.widget-background.animation-pulseSlow(src='img/placeholders/headers/widget5_header.jpg', alt='background')
+            h3.widget-content.widget-content-image.widget-content-light.clearfix
+              span.widget-icon.pull-right
+                i.fa.fa-sun-o.animation-pulse
+              |                                             Weather
+              strong Station
+              br
+              small
+                i.fa.fa-location-arrow
+                |  The Mountain
+          // END Widget Header
+          // Widget Main
+          .widget-main
+            .row.text-center
+              .col-xs-6.col-lg-3
+                h3
+                  strong 10°
+                  small C
+                  br
+                  small Sunny
+              .col-xs-6.col-lg-3
+                h3
+                  strong 80
+                  small %
+                  br
+                  small Humidity
+              .col-xs-6.col-lg-3
+                h3
+                  strong 60
+                  small km/h
+                  br
+                  small Wind
+              .col-xs-6.col-lg-3
+                h3
+                  strong 5
+                  small km
+                  br
+                  small Visibility
+          // END Widget Main
+      // END Weather Widget
+      // Advanced Gallery Widget
+      .widget
+        .widget-advanced
+          // Widget Header
+          .widget-header.text-center.themed-background-dark
+            h3.widget-content-light.clearfix
+              | Awesome
+              strong Gallery
+              br
+              small 4 Photos
+          // END Widget Header
+          // Widget Main
+          .widget-main
+            a.widget-image-container(href='page_comp_gallery.html')
+              span.widget-icon.themed-background
+                i.gi.gi-picture
+            .gallery.gallery-widget(data-toggle='lightbox-gallery')
+              .row
+                .col-xs-6.col-sm-3
+                  a.gallery-link(href='img/placeholders/photos/photo15.jpg', title='Image Info')
+                    img(src='img/placeholders/photos/photo15.jpg', alt='image')
+                .col-xs-6.col-sm-3
+                  a.gallery-link(href='img/placeholders/photos/photo5.jpg', title='Image Info')
+                    img(src='img/placeholders/photos/photo5.jpg', alt='image')
+                .col-xs-6.col-sm-3
+                  a.gallery-link(href='img/placeholders/photos/photo6.jpg', title='Image Info')
+                    img(src='img/placeholders/photos/photo6.jpg', alt='image')
+                .col-xs-6.col-sm-3
+                  a.gallery-link(href='img/placeholders/photos/photo13.jpg', title='Image Info')
+                    img(src='img/placeholders/photos/photo13.jpg', alt='image')
+          // END Widget Main
+      // END Advanced Gallery Widget
+  // END Widgets Row
+// END Page Content
+// Footer
+footer.clearfix
+  .pull-right
+    | Crafted with
+    i.fa.fa-heart.text-danger
+    |  by
+    a(href='http://goo.gl/vNS3I', target='_blank') pixelcave
+  .pull-left
+    span#year-copy
+    |  ©
+    a(href='http://goo.gl/TDOSuC', target='_blank') ProUI 2.1

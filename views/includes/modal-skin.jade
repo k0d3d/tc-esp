@@ -1,0 +1,43 @@
+#modal-user-settings.modal.fade(tabindex='-1', role='dialog', aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      // Modal Header
+      .modal-header.text-center
+        h2.modal-title
+          i.fa.fa-pencil
+          |  Settings
+      // END Modal Header
+      // Modal Body
+      .modal-body
+        form.form-horizontal.form-bordered(action='index.html', method='post', enctype='multipart/form-data', onsubmit='return false;')
+          fieldset
+            legend Vital Info
+            .form-group
+              label.col-md-4.control-label Username
+              .col-md-8
+                p.form-control-static Admin
+            .form-group
+              label.col-md-4.control-label(for='user-settings-email') Email
+              .col-md-8
+                input#user-settings-email.form-control(type='email', name='user-settings-email', value='admin@example.com')
+            .form-group
+              label.col-md-4.control-label(for='user-settings-notifications') Email Notifications
+              .col-md-8
+                label.switch.switch-primary
+                  input#user-settings-notifications(type='checkbox', name='user-settings-notifications', value='1', checked='')
+                  span
+          fieldset
+            legend Password Update
+            .form-group
+              label.col-md-4.control-label(for='user-settings-password') New Password
+              .col-md-8
+                input#user-settings-password.form-control(type='password', name='user-settings-password', placeholder='Please choose a complex one..')
+            .form-group
+              label.col-md-4.control-label(for='user-settings-repassword') Confirm New Password
+              .col-md-8
+                input#user-settings-repassword.form-control(type='password', name='user-settings-repassword', placeholder='..and confirm it!')
+          .form-group.form-actions
+            .col-xs-12.text-right
+              button.btn.btn-sm.btn-default(type='button', data-dismiss='modal') Close
+              button.btn.btn-sm.btn-primary(type='submit') Save Changes
+      // END Modal Body

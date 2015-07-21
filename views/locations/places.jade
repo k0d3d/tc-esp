@@ -1,0 +1,89 @@
+// Page content
+#page-content
+  // Contacts Header
+  .content-header
+    .header-section
+      h1
+        i.gi.gi-parents
+        | Locations
+        br
+        small Manage all authorized locations!
+
+  // END Contacts Header
+  // Main Row
+  .row
+    .block
+      .table-options.clearfix
+
+        .btn-group.btn-group-sm.pull-left(data-toggle='buttons')
+            form.navbar-form-custom(role='search', ng-submit="submit_search(qry)")
+              .form-group
+                input#top-search.form-control(type='text', name='qry', ng-model="qry" placeholder='Search..')
+
+
+      .table-responsive
+        //
+          Available Table Classes:
+          'table'             - basic table
+          'table-bordered'    - table with full borders
+          'table-borderless'  - table with no borders
+          'table-striped'     - striped table
+          'table-condensed'   - table with smaller top and bottom cell padding
+          'table-hover'       - rows highlighted on mouse hover
+          'table-vcenter'     - middle align content vertically
+        table#general-table.table.table-striped.table-vcenter
+          thead
+            tr
+              th.text-center(style='width: 80px;')
+                input(type='checkbox')
+              th.text-center(style='width: 150px;')
+                i.gi.gi-user
+              th Location Name
+              th Author
+              th Added On
+              th.text-center(style='width: 150px;') Actions
+          tbody
+            tr(ng-repeat="place in places_list")
+              td.text-center
+                input#checkbox1-1(type='checkbox', name='checkbox1-1')
+              td.text-center
+                img.img-circle(src='img/placeholders/avatars/avatar16.jpg', alt='avatar')
+              td
+                a(ui-sref='location({locationId: place._id})') {{place.name}}
+              td {{place.author || 'N/A'}}
+              td
+                a.label.label-warning(href='javascript:void(0)') {{place.dateAdded | date:'medium'}}
+                p.label.label-warning(href='javascript:void(0)') <span city-state="place">{{place.formatted_address}}</span>
+              td.text-center
+                .btn-group.btn-group-xs
+                  a.btn.btn-default(href='javascript:void(0)', data-toggle='tooltip', title='', data-original-title='Edit')
+                    i.fa.fa-pencil
+                  a.btn.btn-danger(href='javascript:void(0)', data-toggle='tooltip', title='', data-original-title='Delete')
+                    i.fa.fa-times
+
+          tfoot
+            tr
+              td(colspan='6')
+                .btn-group.btn-group-sm.pull-right
+                  a.btn.btn-primary(href='javascript:void(0)', data-toggle='tooltip', title='', data-original-title='Settings')
+                    i.fa.fa-cog
+                  .btn-group.btn-group-sm.dropup
+                    a.btn.btn-primary.pull-right.dropdown-toggle(href='javascript:void(0)', data-toggle='dropdown')
+                      span.caret
+                    ul.dropdown-menu.dropdown-custom.dropdown-menu-right
+                      li
+                        a(href='javascript:void(0)')
+                          i.fa.fa-print.pull-right
+                          |  Print
+                      li.dropdown-header
+                        i.fa.fa-share.pull-right
+                        |  Export As
+                      li
+                        a(href='javascript:void(0)') .pdf
+                        a(href='javascript:void(0)') .cvs
+                .btn-group.btn-group-sm
+                  a.btn.btn-primary(href='javascript:void(0)', data-toggle='tooltip', title='', data-original-title='Edit Selected')
+                    i.fa.fa-pencil
+                  a.btn.btn-primary(href='javascript:void(0)', data-toggle='tooltip', title='', data-original-title='Delete Selected')
+                    i.fa.fa-times
+      // END Table Styles Content
