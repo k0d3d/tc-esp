@@ -25,10 +25,10 @@
     },
     "app": {
         "name": "Tag Chief API Server",
-        "server": "stark-cliffs-8842.herokuapp.com"
+        "server": "http://stark-cliffs-8842.herokuapp.com/"
     },
     "tagChiefOAuth": {
-        "server" : "http://stark-cliffs-8842.herokuapp.com",
+        "server" : "http://stark-cliffs-8842.herokuapp.com/",
         "authenticationUrl" : "/api/v1/users/auth",
         "clientCheckUrl" : "/api/v1/clients/%s?field_type=email",
         "authorizationUrl" : "/oauth/token",
