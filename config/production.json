@@ -1,11 +1,11 @@
 {
     "db": {
-        "url": "mongodb://heroku_app33864268:oufojfnkdt6dj8hjmqlsqe6e2u@ds041651.mongolab.com:41651/heroku_app33864268",
-        "user": "heroku_app33864268",
-        "password": "oufojfnkdt6dj8hjmqlsqe6e2u",
-        "database": "heroku_app33864268",
-        "port": 41651,
-        "server": "ds041651.mongolab.com"
+        "url": "mongodb://heroku_dk5tp6f4:u5172245ppju15njllkobeosoi@ds061731.mongolab.com:61731/heroku_dk5tp6f4",
+        "user": "heroku_dk5tp6f4",
+        "password": "u5172245ppju15njllkobeosoi",
+        "database": "heroku_dk5tp6f4",
+        "port": 61731,
+        "server": "ds061731.mongolab.com"
         },
     "express":{
         "secret": "H&H#BDMSU@(@nsika*W@}{SA(*@",
@@ -26,5 +26,21 @@
     "app": {
         "name": "Tag Chief API Server",
         "server": "stark-cliffs-8842.herokuapp.com"
+    },
+    "tagChiefOAuth": {
+        "server" : "http://stark-cliffs-8842.herokuapp.com",
+        "authenticationUrl" : "/api/v1/users/auth",
+        "clientCheckUrl" : "/api/v1/clients/%s?field_type=email",
+        "authorizationUrl" : "/oauth/token",
+        "redirectUrl": "/auth_callback",
+        "endpoints" : {
+            "users" : {
+                "query_all" : "/api/v2/users"
+            },
+            "locations" : {
+                "query_all": "/api/v2/locations",
+                "one_location": "/api/v2/locations/%s"
+            }
+        }
     }
 }
