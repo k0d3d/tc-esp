@@ -57,3 +57,16 @@ locations.controller('FeedbackController', ['$scope', 'LocationService', '$state
   });
 
 }]);
+locations.filter('author_field', function () {
+  return function (ob) {
+    if (_.isObject(ob)) {
+      if (ob.email) {
+        return ob.email;
+      } else {
+        return 'N/A';
+      }
+    } else {
+      return 'N/A';
+    }
+  };
+});
