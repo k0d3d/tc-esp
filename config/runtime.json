@@ -1,1 +1,9 @@
-{}
+{
+  "express": {
+    "cors": {
+      "options": {
+        "origin": true
+      }
+    }
+  }
+}

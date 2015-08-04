@@ -4,17 +4,13 @@
   .sidebar-scroll
     // Sidebar Content
     .sidebar-content
-      // Brand
-      a.sidebar-brand(href='/')
-        strong tagChief
-      // END Brand
       // User Info
       .sidebar-section.sidebar-user.clearfix
         .sidebar-user-avatar
-          a(href='page_ready_user_profile.html')
-            img(src='img/placeholders/avatars/avatar2.jpg', alt='avatar')
-        .sidebar-user-name John Doe
-        .sidebar-user-links
+          a(href='')
+            img(src='img/tag-logo.png', alt='avatar')
+        //.sidebar-user-name tagChief
+        //.sidebar-user-links
           a(href='', data-toggle='tooltip', data-placement='bottom', title='Logout', ng-click="do_logout()")
             i.gi.gi-exit
       // END User Info
@@ -26,13 +22,7 @@
           a.active(href='index.html')
             i.gi.gi-stopwatch.sidebar-nav-icon
             | Dashboard
-        li.sidebar-header
-          span.sidebar-header-options.clearfix
-            a(href='javascript:void(0)', data-toggle='tooltip', title='Quick Settings')
-              i.gi.gi-settings
-            a(href='javascript:void(0)', data-toggle='tooltip', title='Create the most amazing pages with the widget kit!')
-              i.gi.gi-lightbulb
-          span.sidebar-header-title Sections
+
         li
           a(ui-sref='users')
             i.gi.gi-charts.sidebar-nav-icon
@@ -46,38 +36,6 @@
             i.gi.gi-film.sidebar-nav-icon
             | Activity
 
-      // END Sidebar Navigation
-      // Sidebar Notifications
-      .sidebar-header
-        span.sidebar-header-options.clearfix
-          a(href='javascript:void(0)', data-toggle='tooltip', title='Refresh')
-            i.gi.gi-refresh
-        span.sidebar-header-title Activity
-      .sidebar-section
-        .alert.alert-success.alert-alt
-          small 5 min ago
-          br
-          i.fa.fa-thumbs-up.fa-fw
-          |  You had a new sale ($10)
-        .alert.alert-info.alert-alt
-          small 10 min ago
-          br
-          i.fa.fa-arrow-up.fa-fw
-          |  Upgraded to Pro plan
-        .alert.alert-warning.alert-alt
-          small 3 hours ago
-          br
-          i.fa.fa-exclamation.fa-fw
-          |  Running low on space
-          br
-          strong 18GB in use
-          |  2GB left
-        .alert.alert-danger.alert-alt
-          small Yesterday
-          br
-          i.fa.fa-bug.fa-fw
-          a(href='javascript:void(0)')
-            strong New bug submitted
       // END Sidebar Notifications
     // END Sidebar Content
   // END Wrapper for scrolling functionality

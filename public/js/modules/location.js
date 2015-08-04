@@ -42,3 +42,18 @@ locations.controller('LocationPageController', ['$scope', 'LocationService', '$s
   });
 
 }]);
+locations.controller('FeedbackController', ['$scope', 'LocationService', '$stateParams', function ($scope, LocationService, $stateParams) {
+  $scope._viewOptions = {
+    page: 0,
+    rpp: 20,
+    locationId: $stateParams.locationId,
+    listType: 'checkin'
+  };
+  // return;
+  LocationService.query($scope._viewOptions)
+  .$promise
+  .then(function (response) {
+    $scope.one_place_checkin =  response;
+  });
+
+}]);

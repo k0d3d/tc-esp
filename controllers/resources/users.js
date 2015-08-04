@@ -38,7 +38,6 @@ module.exports = function (resource) {
     var users = new User(), u = new Utils();
 
     var id = u.isEmail(req.body.email) ? {email: req.body.email} : {phoneNumber: req.body.email};
-    console.log(id);
     users.findUserObject(id)
     .then(function (userObject) {
       return users.sendPasswordResetMobile(userObject, req.body.deviceId);

@@ -56,7 +56,6 @@ module.exports = function (resource) {
       qs: req.query,
       json: true
     }, function (err, resp, bd) {
-      console.log(bd);
       if (err) {
         next(err);
       }

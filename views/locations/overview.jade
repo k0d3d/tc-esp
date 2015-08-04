@@ -38,11 +38,12 @@
               td.text-center
                 input#checkbox1-1(type='checkbox', name='checkbox1-1')
               td.text-center
-                img.img-circle(src='img/placeholders/avatars/avatar16.jpg', alt='avatar')
+                img.img-circle(src='img/placeholders/avatars/avatar16.png', alt='avatar')
               td
                 a(href='') {{place.userId.firstname}} {{place.userId.lastname}}
               td {{place.checkInTime | date:'medium'}}
               td
+                a.btn(ui-sref="checkinfeedback({chekinId: place._id, locationId: place.locationId._id})") View Feedback
 
 
 

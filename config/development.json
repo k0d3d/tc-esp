@@ -1,11 +1,13 @@
 {
+
     "db": {
-        "server": "localhost",
-        "database": "tagChiefStats",
-        "port": 27017,
-        "user": "",
-        "pass": ""
-    },
+        "url": "mongodb://heroku_dk5tp6f4:u5172245ppju15njllkobeosoi@ds061731.mongolab.com:61731/heroku_dk5tp6f4",
+        "user": "heroku_dk5tp6f4",
+        "password": "u5172245ppju15njllkobeosoi",
+        "database": "heroku_dk5tp6f4",
+        "port": 61731,
+        "server": "ds061731.mongolab.com"
+        },
     "app": {
         "name": "TagChief Mobile",
         "home": "tagChief-node",
@@ -15,6 +17,7 @@
         "server" : "http://localhost:3333/",
         "authenticationUrl" : "/api/v1/users/auth",
         "clientCheckUrl" : "/api/v1/clients/%s?field_type=email",
+        "clientCreateUrl" : "/api/v1/clients",
         "authorizationUrl" : "/oauth/token",
         "redirectUrl": "/auth_callback",
         "endpoints" : {

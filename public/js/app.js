@@ -44,6 +44,15 @@ app.config([
         }
       },
     })
+    .state('checkinfeedback', {
+      url: '/locations/:locationId/checkin/:checkinId',
+      views: {
+        'pageContent' : {
+          templateUrl: '/locations/feedback',
+          controller: 'FeedbackController',
+        }
+      },
+    })
     .state('users', {
       url: '/users',
       views: {

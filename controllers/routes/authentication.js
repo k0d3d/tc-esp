@@ -70,14 +70,56 @@ module.exports = function (app, passport) {
             });
             return;
           }
-          //store in session for later
-          req.session.userClientData = csBody;
-          req.session.userClientData.userEmail = userEmail;
+          if (!csBody) {
+            //create a new client
+            request.post({
+              baseUrl: config.tagChiefOAuth.server,
+              url: config.tagChiefOAuth.clientCreateUrl,
+              body: {
+                name: 'ESP',
+                deviceId: 'OAuth00000',
+                email: userEmail
+              },
+              json: true,
+              auth:{
+                user: userEmail,
+                pass: userPassword
+              }
+            }, function (err, resp, body) {
+              if (err) {
+                next(err);
+                // res.status(resp.statusC?ode).json(err.message);
+                return;
+              }
 
-          // debug('%soauth/authorize?client_id=%s&redirect_uri=%s&response_type=code&scope=read%20write&email=%s&password=%s', config.tagChiefOAuth.server, csBody.clientKey, config.tagChiefOAuth.server + config.tagChiefOAuth.redirectUrl, userEmail, userPassword);
-          res.redirect(util.format('%soauth/authorize?client_id=%s&redirect_uri=%s&response_type=code&scope=read%20write&email=%s&password=%s',
-            config.tagChiefOAuth.server, csBody.clientKey, url.resolve(config.app.server, config.tagChiefOAuth.redirectUrl),
-            userEmail, userPassword));
+              if (resp.statusCode === 401) {
+                res.status(401).render('home/login', {
+                  errorMessage: 'Wrong Credentials',
+                  email: userEmail
+                });
+                return;
+              }
+              var csBody = JSON.parse(body);
+              //store in session for later
+              req.session.userClientData = csBody;
+              req.session.userClientData.userEmail = userEmail;
+
+              // debug('%soauth/authorize?client_id=%s&redirect_uri=%s&response_type=code&scope=read%20write&email=%s&password=%s', config.tagChiefOAuth.server, csBody.clientKey, config.tagChiefOAuth.server + config.tagChiefOAuth.redirectUrl, userEmail, userPassword);
+              res.redirect(util.format('%soauth/authorize?client_id=%s&redirect_uri=%s&response_type=code&scope=read%20write&email=%s&password=%s',
+                config.tagChiefOAuth.server, csBody.clientKey, url.resolve(config.app.server, config.tagChiefOAuth.redirectUrl),
+                userEmail, userPassword));
+            });
+          } else {
+
+            //store in session for later
+            req.session.userClientData = csBody;
+            req.session.userClientData.userEmail = userEmail;
+
+            // debug('%soauth/authorize?client_id=%s&redirect_uri=%s&response_type=code&scope=read%20write&email=%s&password=%s', config.tagChiefOAuth.server, csBody.clientKey, config.tagChiefOAuth.server + config.tagChiefOAuth.redirectUrl, userEmail, userPassword);
+            res.redirect(util.format('%soauth/authorize?client_id=%s&redirect_uri=%s&response_type=code&scope=read%20write&email=%s&password=%s',
+              config.tagChiefOAuth.server, csBody.clientKey, url.resolve(config.app.server, config.tagChiefOAuth.redirectUrl),
+              userEmail, userPassword));
+          }
         });
 
         // res.status(resp.statusCode).json(body);
