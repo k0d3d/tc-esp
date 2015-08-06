@@ -4,7 +4,7 @@ var config_data = {
     'app_name': 'TagChief Stats Reporting'
   },
   'api_config': {
-    'CONSUMER_API_URL': 'https://stark-cliffs-8842.herokuapp.com'
+    'CONSUMER_API_URL': 'https://tagchief-stats.herokuapp.com'
     // 'CONSUMER_API_URL': 'http://192.168.1.2:3000'
     // 'CONSUMER_API_URL': 'http://192.168.43.27:3000'
     // 'CONSUMER_API_URL': 'http://192.168.43.184:3000'
