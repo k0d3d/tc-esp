@@ -24,11 +24,12 @@
         }
     },
     "app": {
-        "name": "Tag Chief API Server",
-        "server": "http://stark-cliffs-8842.herokuapp.com/"
+        "name": "TagChief Stats Reporting",
+        "home": "tagChief-mon",
+        "server": "https://tagchief-stats.herokuapp.com"
     },
     "tagChiefOAuth": {
-        "server" : "http://stark-cliffs-8842.herokuapp.com/",
+        "server" : "https://stark-cliffs-8842.herokuapp.com/",
         "authenticationUrl" : "/api/v1/users/auth",
         "clientCheckUrl" : "/api/v1/clients/%s?field_type=email",
         "clientCreateUrl" : "/api/v1/clients",

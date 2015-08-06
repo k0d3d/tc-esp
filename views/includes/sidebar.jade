@@ -19,15 +19,6 @@
       // Sidebar Navigation
       ul.sidebar-nav
         li
-          a.active(href='index.html')
-            i.gi.gi-stopwatch.sidebar-nav-icon
-            | Dashboard
-
-        li
-          a(ui-sref='users')
-            i.gi.gi-charts.sidebar-nav-icon
-            | Users
-        li
           a(ui-sref="locations")
             i.gi.gi-share_alt.sidebar-nav-icon
             | Locations
@@ -35,6 +26,10 @@
           a(href='page_widgets_media.html')
             i.gi.gi-film.sidebar-nav-icon
             | Activity
+        li
+          a(href='/exit')
+            i.gi.gi-film.sidebar-nav-icon
+            | Logout
 
       // END Sidebar Notifications
     // END Sidebar Content

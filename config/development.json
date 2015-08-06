@@ -9,8 +9,8 @@
         "server": "ds061731.mongolab.com"
         },
     "app": {
-        "name": "TagChief Mobile",
-        "home": "tagChief-node",
+        "name": "TagChief Stats Reporting",
+        "home": "tagChief-mon",
         "server": "http://localhost:3000/"
     },
     "tagChiefOAuth": {

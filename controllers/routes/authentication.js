@@ -121,28 +121,7 @@ module.exports = function (app, passport) {
               userEmail, userPassword));
           }
         });
-
-        // res.status(resp.statusCode).json(body);
       });
-   // var callback = req.query.callback || '/';
-
-   // passport.authenticate('local', function(err, user, info) {
-   //   if (err || !user) {
-   //     res.render('home/login', {
-   //       error: info ? info.message : 'Unable to login.',
-   //       username: req.body.username
-   //     });
-   //     return next();
-   //   }
-
-   //   req.logIn(user, function(err) {
-   //     if (err) {
-   //       return next(err);
-   //     }
-
-   //     return res.redirect(callback);
-   //   });
-   // })(req, res, next);
   });
 
 
@@ -206,7 +185,7 @@ module.exports = function (app, passport) {
 
   });
 
-  app.post('/logout', function (req, res) {
+  app.post('/exit', function (req, res) {
     req.logout();
     res.redirect('/login');
   });
