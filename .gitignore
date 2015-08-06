@@ -3,4 +3,4 @@ scripts/
 conventions
 nodemon.json
 todo
-#public/js/modules/config.js
+public/js/modules/config.js
