@@ -112,3 +112,4 @@ app.controller('main', ['$scope', 'requests', function ($scope, requests) {
     requests.logout();
   };
 }]);
+
