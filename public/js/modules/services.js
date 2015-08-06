@@ -2,7 +2,7 @@ var services = angular.module('services', []);
 services.factory('requests', ['$http', function ($http) {
   return {
     logout: function () {
-      return $http.post('/logout')
+      return $http.post('/exit')
         .then(function () {
             window.location = '/login';
         });
