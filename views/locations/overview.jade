@@ -9,20 +9,9 @@
         br
         small {{one_place_checkin[0].locationId.description}}
 
-  // END Contacts Header
-  // Main Row
   .row
     .block
       .table-responsive
-        //
-          Available Table Classes:
-          'table'             - basic table
-          'table-bordered'    - table with full borders
-          'table-borderless'  - table with no borders
-          'table-striped'     - striped table
-          'table-condensed'   - table with smaller top and bottom cell padding
-          'table-hover'       - rows highlighted on mouse hover
-          'table-vcenter'     - middle align content vertically
         table#general-table.table.table-striped.table-vcenter
           thead
             tr
@@ -43,7 +32,7 @@
                 a(href='') {{place.userId.firstname}} {{place.userId.lastname}}
               td {{place.checkInTime | date:'medium'}}
               td
-                //- a.btn(ui-sref="checkinfeedback({checkinId: 'place._id', locationId: place.locationId._id})") View Feedback
+                a.btn(ui-sref="checkinfeedback({checkinId: place._id, locationId: place.locationId._id})") View Feedback
 
 
 

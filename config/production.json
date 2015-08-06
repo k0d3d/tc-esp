@@ -31,6 +31,7 @@
         "server" : "http://stark-cliffs-8842.herokuapp.com/",
         "authenticationUrl" : "/api/v1/users/auth",
         "clientCheckUrl" : "/api/v1/clients/%s?field_type=email",
+        "clientCreateUrl" : "/api/v1/clients",
         "authorizationUrl" : "/oauth/token",
         "redirectUrl": "/auth_callback",
         "endpoints" : {

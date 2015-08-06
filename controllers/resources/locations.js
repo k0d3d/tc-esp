@@ -3,6 +3,7 @@ var
     request = require('request'),
     config = require('config'),
     util = require('util'),
+    xlsx = require('excel-export'),
     Utils = require('../../lib/utility');
 
 
@@ -15,7 +16,7 @@ function process_request_all_locations (requestInstance, req, res, next) {
       if (err) {
         next(err);
       }
-      if (resp.statusCode < 400) {
+      if (resp && resp.statusCode < 400) {
         res.json(bd);
       } else {
         res.status(resp.statusCode);
@@ -66,4 +67,5 @@ module.exports = function (resource) {
       }
     });
   });
+
 };

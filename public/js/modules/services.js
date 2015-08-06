@@ -37,7 +37,8 @@ services.factory('LocationService', ['$resource', function ($resource) {
     page: '@page',
     rpp: '@rpp',
     q: 'q',
-    listType: '@listType'
+    listType: '@listType',
+    cid: '@cid'
   }, {
     update:{
       method:'PUT',

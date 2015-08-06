@@ -5,9 +5,9 @@
     .header-section
       h1
         i.gi.gi-parents
-        | {{one_place_checkin[0].locationId.name || 'Unknown'}}
+        | Feedback
         br
-        small {{one_place_checkin[0].locationId.description}}
+        small {{one_checkin_feedback[0].checkInId.checkInTime | date:'medium'}}
 
   // END Contacts Header
   // Main Row
@@ -26,24 +26,22 @@
         table#general-table.table.table-striped.table-vcenter
           thead
             tr
-              th.text-center(style='width: 80px;')
-                input(type='checkbox')
-              th.text-center(style='width: 150px;')
-                i.gi.gi-user
-              th User
-              th CheckInTime
-              th Activities
+              th Question
+              th Comment
+              th Triggered At
+              th Response Time
+              th Response
           tbody
-            tr(ng-repeat="place in one_place_checkin")
-              td.text-center
-                input#checkbox1-1(type='checkbox', name='checkbox1-1')
-              td.text-center
-                img.img-circle(src='img/placeholders/avatars/avatar16.png', alt='avatar')
+
+            tr(ng-repeat="f in one_checkin_feedback[0].questions")
               td
-                a(href='') {{place.userId.firstname}} {{place.userId.lastname}}
-              td {{place.checkInTime | date:'medium'}}
+                | {{f.question}}
+              td {{f.answers[0].answer}}
+              td {{f.answers[0].dateTriggered | date: 'medium'}}
+              td {{f.answers[0].timeUpdated | date: 'medium'}}
               td
-                a.btn(ui-sref="")
+                i.gi.gi-thumbs_up(ng-show="f.answers[0].decision", style="color: green")
+                i.gi.gi-thumbs_down(ng-hide="f.answers[0].decision", style="color: red")
 
 
 

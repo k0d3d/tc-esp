@@ -47,13 +47,16 @@ locations.controller('FeedbackController', ['$scope', 'LocationService', '$state
     page: 0,
     rpp: 20,
     locationId: $stateParams.locationId,
-    listType: 'checkin'
+    listType: 'checkin',
+    cid: $stateParams.checkinId
   };
   // return;
   LocationService.query($scope._viewOptions)
   .$promise
   .then(function (response) {
-    $scope.one_place_checkin =  response;
+    $scope.one_checkin_feedback  =  response;
+  }, function (err) {
+    alert('An error occured when executing this operation. Admin has been notified');
   });
 
 }]);
