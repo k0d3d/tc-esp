@@ -10,14 +10,14 @@ html.no-js
     block head
       include ../includes/head-assets.jade
   body(ng-app="tagChiefStatsApp")
-    #page-container.sidebar-partial.sidebar-visible-lg.sidebar-no-animations.header-fixed-top(ng-controller="main")
+    #page-container.sidebar-partial.sidebar-visible-lg.sidebar-no-animations(ng-controller="main")
       block sidebar
         include ../includes/sidebar.jade
 
       // Main Container
       #main-container
 
-        header.navbar.navbar-fixed-top.navbar-default
+        //- header.navbar.navbar-fixed-top.navbar-default
 
 
         block page
