@@ -41,6 +41,29 @@ module.exports = function (resource) {
 
     next(new Error('Invalid Request'));
   });
+  resource.route('/feedback')
+  .get(function (req, res, next) {
+    var all_locations_request = request.defaults({
+      headers: {
+        'Authorization' : 'Bearer ' + req.user.accessToken
+      },
+      baseUrl: config.tagChiefOAuth.server
+    });
+    all_locations_request.get({
+      url: config.tagChiefOAuth.endpoints.feedback.query_all,
+      qs: req.query,
+      json: true
+    }, function (err, resp, bd) {
+      if (err) {
+        next(err);
+      }
+      if (resp && resp.statusCode < 400) {
+        res.json(bd);
+      } else {
+        next(new Error('Unknown Connection Error'));
+      }
+    });
+  });
 
 
   //Authentication Api Routes
@@ -60,10 +83,10 @@ module.exports = function (resource) {
       if (err) {
         next(err);
       }
-      if (resp.statusCode < 400) {
+      if (resp && resp.statusCode < 400) {
         res.json(bd);
       } else {
-        res.status(resp.statusCode);
+        next(new Error('Unknown Connection Error'));
       }
     });
   });

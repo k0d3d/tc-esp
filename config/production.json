@@ -42,6 +42,9 @@
             "locations" : {
                 "query_all": "/api/v2/locations",
                 "one_location": "/api/v2/locations/%s"
+            },
+            "feedback": {
+                "query_all": "/api/v2/feedback"
             }
         }
     }

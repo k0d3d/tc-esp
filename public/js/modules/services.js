@@ -46,3 +46,12 @@ services.factory('LocationService', ['$resource', function ($resource) {
     },
   });
 }]);
+services.factory('FeedbackService', ['$resource', function ($resource) {
+
+  return $resource('/resource/feedback', {
+    page: '@page',
+    rpp: '@rpp',
+    q: 'q',
+    listType: '@listType',
+  });
+}]);

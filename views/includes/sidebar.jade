@@ -19,13 +19,13 @@
       // Sidebar Navigation
       ul.sidebar-nav
         li
+          a(ui-sref='activities')
+            i.gi.gi-stats.sidebar-nav-icon
+            | Activity
+        li
           a(ui-sref="locations")
             i.gi.gi-building.sidebar-nav-icon
             | Locations
-        li
-          a(href='')
-            i.gi.gi-stats.sidebar-nav-icon
-            | Activity
         li
           a(href="", ng-click="do_logout()")
             i.gi.gi-exit.sidebar-nav-icon

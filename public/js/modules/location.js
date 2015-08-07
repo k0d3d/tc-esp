@@ -1,5 +1,19 @@
 var locations = angular.module('locations', []);
-
+locations.controller('ActivitiesController', ['$scope', 'FeedbackService', function ($scope, FeedbackService) {
+  $scope._viewOptions = {
+    page: 0,
+    rpp: 20,
+    listType: 'feedbacks',
+  };
+  // return;
+  FeedbackService.query($scope._viewOptions)
+  .$promise
+  .then(function (response) {
+    $scope.all_feedback  =  response;
+  }, function (err) {
+    alert('An error occured when executing this operation. Admin has been notified');
+  });
+}]);
 locations.controller('LocationController', ['$scope', 'LocationService', function ($scope, LocationService) {
   $scope._viewOptions = {
     page: 0,

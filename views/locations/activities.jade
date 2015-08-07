@@ -15,17 +15,23 @@
     .block
       .table-responsive
 
-        table#general-table.table.table-hover.table-vcenter
+
+        table#general-table.table.table-hover.table-vcenter.feedback-grid(ng-repeat="fd in all_feedback")
           thead
             tr
-              th Questions
-              th Comment
-              th Triggered At
-              th Response Time
-              th Response
+              th
+                h3 {{fd.locationData.name}}
+                span {{fd.locationData.category}}, <span city-state="fd.locationData">{{fd.locationData.formatted_address}}</span>
+
+            tr
+              th.lighter Questions
+              th.col-md-3.lighter Comment
+              th.lighter Triggered At
+              th.lighter Response Time
+              th.lighter Response
           tbody
 
-            tr(ng-repeat="f in one_checkin_feedback[0].questions")
+            tr(ng-repeat="f in fd.questions")
               td
                 | {{f.question}}
               td
@@ -38,11 +44,3 @@
               td
                 i.gi.gi-thumbs_up(ng-show="f.answers[0].decision", style="color: green")
                 i.gi.gi-thumbs_down(ng-hide="f.answers[0].decision !== false", style="color: red")
-
-
-
-          tfoot
-            tr
-              td(colspan='6')
-
-      // END Table Styles Content

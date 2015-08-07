@@ -53,12 +53,12 @@ app.config([
         }
       },
     })
-    .state('users', {
-      url: '/users',
+    .state('activities', {
+      url: '/activities',
       views: {
         'pageContent' : {
-          templateUrl: '/users/list',
-          controller: 'UserController',
+          templateUrl: '/locations/activities',
+          controller: 'ActivitiesController',
         }
       }
     })
