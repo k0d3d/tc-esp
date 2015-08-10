@@ -16,16 +16,16 @@ app.config([
   '$httpProvider',
   function ($stateProvider, $urlRouterProvider, $httpProvider){
     $stateProvider
-    .state('primary', {
-      url: '/',
-      views: {
-        'pageContent' : {
-          templateUrl: '/home/index',
-          // controller: 'main'
-        }
-      },
-      // controller: 'indexController'
-    })
+    // .state('primary', {
+    //   url: '/',
+    //   views: {
+    //     'pageContent' : {
+    //       templateUrl: '/home/index',
+    //       // controller: 'main'
+    //     }
+    //   },
+    //   // controller: 'indexController'
+    // })
     .state('location', {
       url: '/locations/:locationId',
       views: {
@@ -71,7 +71,7 @@ app.config([
       }
     });
 
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/activities');
 
     $httpProvider.interceptors.push(['$q', 'api_config', '$rootScope', function ($q, api_config, $rootScope) {
         return {
