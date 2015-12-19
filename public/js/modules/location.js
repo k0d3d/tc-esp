@@ -2,7 +2,7 @@ var locations = angular.module('locations', []);
 locations.controller('ActivitiesController', ['$scope', 'FeedbackService', function ($scope, FeedbackService) {
   $scope._viewOptions = {
     page: 0,
-    rpp: 20,
+    rpp: 10,
     listType: 'feedbacks',
   };
   // return;
@@ -17,7 +17,7 @@ locations.controller('ActivitiesController', ['$scope', 'FeedbackService', funct
 locations.controller('LocationController', ['$scope', 'LocationService', function ($scope, LocationService) {
   $scope._viewOptions = {
     page: 0,
-    rpp: 20,
+    rpp: 10,
     listType: 'list_all_locations'
   };
   // return;
@@ -26,6 +26,14 @@ locations.controller('LocationController', ['$scope', 'LocationService', functio
   .then(function (response) {
     $scope.places_list =  response;
   });
+
+  $scope.turnPage = function (qry) {
+    LocationService.query(angular.extend({}, $scope._viewOptions, qry))
+    .$promise
+    .then(function (response) {
+      $scope.places_list =  response;
+    });
+  }
 
   $scope.submit_search = function submit_search (qry) {
     LocationService.query({
@@ -74,6 +82,37 @@ locations.controller('FeedbackController', ['$scope', 'LocationService', '$state
   });
 
 }]);
+locations.directive('pagination', [function(){
+    function link(scope, element, attrs){
+      scope.pageno = 0;
+      scope.limit = 10;
+      $('button.prevbtn', element).on('click', function(e){
+        var page = scope.pageno - 1;
+        if(scope.pageno === 1) return false;
+        scope.pageTo({pageNo: page, limit: scope.limit, cb: function(r){
+          if(r) scope.pageno--;
+        }});
+      });
+      $('button.nextbtn', element).on('click', function(e){
+        var page = scope.pageno + 1;
+        scope.pageTo({pageNo: page, limit: scope.limit, cb: function(r){
+          if(r) scope.pageno++;
+        }});
+      });
+      scope.pagelimit = function(limit){
+        scope.pageTo({pageNo: scope.pageno, limit: limit, cb: function(r){
+          if(r) scope.limit = limit;
+        }});
+      };
+    }
+    return {
+      link: link,
+      scope: {
+        pageTo: '&'
+      },
+      templateUrl: '/templates/pagination.jade'
+    };
+  }]);
 locations.filter('author_field', function () {
   return function (ob) {
     if (_.isObject(ob)) {

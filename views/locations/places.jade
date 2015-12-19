@@ -14,12 +14,13 @@
   .row
     .block
       .table-options.clearfix
-
+        pagination.pull-right(page-to="turnPage")
+        pagination.pull-right(page-to="turnPage")
         .btn-group.btn-group-sm.pull-left(data-toggle='buttons')
             form.navbar-form-custom(role='search', ng-submit="submit_search(qry)")
               .form-group
                 input#top-search.form-control(type='text', name='qry', ng-model="qry" placeholder='Search..')
-
+        .clearfix
 
       .table-responsive
         //
@@ -58,9 +59,10 @@
                 p.label.label-warning(href='javascript:void(0)') <span city-state="place">{{place.formatted_address}}</span>
               td.text-center
 
-
           tfoot
             tr
-              td(colspan='6')
+              td
+                pagination.pull-right(page-to="turnPage")
+
 
       // END Table Styles Content

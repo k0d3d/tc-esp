@@ -1,47 +1,6 @@
 var MapApp = angular.module('GoogleMapsInitializer', []);
 
 
-// MapApp.factory('Initializer', function($window, $q){
-
-//     //Google's url for async maps initialization accepting callback function
-//     var asyncUrl = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCOt9IYHpYN22m7alw_HKi5y5WBgu57p4s&v=3.exp&sensor=true&callback=',
-//         mapsDefer = $q.defer();
-
-//     //Callback function - resolving promise after maps successfully loaded
-//     $window.googleMapsInitialized = mapsDefer.resolve; // removed ()
-
-//     //Async loader
-//     var asyncLoad = function(asyncUrl, callbackName) {
-//       var script = document.createElement('script');
-//       //script.type = 'text/javascript';
-//       script.src = asyncUrl + callbackName;
-//       document.body.appendChild(script);
-//     };
-//     //Start loading google maps
-//     asyncLoad(asyncUrl, 'googleMapsInitialized');
-
-//     //Usage: Initializer.mapsInitialized.then(callback)
-//     return {
-//         mapsInitialized : mapsDefer.promise,
-//         toolTipInit: function (cb) {
-//             //Google's url for async maps initialization accepting callback function
-//             var asyncUrl = 'js/vendor/gmaps-tooltip.js';
-//             //Callback function - resolving promise after maps successfully loaded
-
-//             //Async loader
-//             var asyncLoad = function(asyncUrl) {
-//               var script = document.createElement('script');
-//               //script.type = 'text/javascript';
-//               script.src = asyncUrl;
-//               document.body.appendChild(script);
-//             };
-//             //Start loading google maps
-//             asyncLoad(asyncUrl);
-//             cb();
-//         }
-//     };
-// });
-
 MapApp.factory('Initializer', function($window, $q){
     //Google's url for async maps initialization accepting callback function
     var asyncUrl = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCOt9IYHpYN22m7alw_HKi5y5WBgu57p4s&v=3.exp&sensor=true&callback=googleMapsInitialized',
@@ -100,7 +59,7 @@ MapApp.filter('lon', function () {
 });
 
 
-MapApp.directive("cityState", ['Initializer', function (Initializer) {
+MapApp.directive("cityState", ['Initializer', 'gpService', function (Initializer, gp) {
   return {
     template: '<em>{{locationData.formatted_address}}</em>',
     scope: {
@@ -109,27 +68,97 @@ MapApp.directive("cityState", ['Initializer', function (Initializer) {
     link: function (scope) {
       Initializer.mapsInitialized
       .then(function () {
-        function init () {
-            var latLng = new google.maps.LatLng(scope.locationData.latitude, scope.locationData.longitude),
-              geoCoder = new google.maps.Geocoder();
+        // scope.locationData should contain lat/log properties eg. {lat: 6.323223, lng: 1.03323}
+        gp.addGPQuery(scope.locationData)
+        .then(function (results) {
 
-              geoCoder.geocode({
-                "latLng": latLng
-              }, function (results, status) {
-                var result = results[0];
+              var result = results.results[0];
 
-                scope.locationData.formatted_address = results[0].formatted_address;
-                scope.$apply();
-            });
-        }
+              scope.locationData.formatted_address = result.formatted_address;
+              // scope.$apply();
+        });
+
 
         scope.$watch('locationData', function (n) {
             if (n) {
-                init();
+                // init();
             }
         });
 
       });
+    }
+  };
+}]);
+
+MapApp.service('gpService', ['$http', '$q', function ($http, $q) {
+  var queueLocationData = [];
+  var lookUpGp = function lookUpGp (locationData) {
+    // still using promises
+    var deferred = $q.defer();
+
+    var latLng = new google.maps.LatLng(locationData.latitude, locationData.longitude),
+      geoCoder = new google.maps.Geocoder();
+
+      geoCoder.geocode({
+        "latLng": latLng
+      }, function (results, status) {
+
+        //store in a variable
+        locationData.results = results;
+        deferred.resolve(locationData);
+    });
+
+    return deferred.promise;
+  };
+  return {
+    isQuerying: false,
+    addGPQuery: function (sd) {
+      var d = $q.defer();
+      //adds argument 'sd',
+      //adds a function with sd as arguments and
+      sd.$Promise = d;
+      queueLocationData.push(sd);
+      if (!this.isQuerying) {
+        this.isQuerying = true;
+        this.execGPQuery();
+      }
+      return sd.$Promise.promise;
+
+    },
+    // This will loop through the queueLocationData array,
+    // The pop() method removes the last element from an
+    // array and returns that element.
+    execGPQuery: function execGPQuery () {
+      var self = this;
+
+      if (queueLocationData.length) {
+        // 'cl' should contain
+        // {
+        //
+        // }
+        var cl = queueLocationData.shift();
+
+        // this function uses the google places
+        // reverse geocoding api to fetch an address based
+        // on the values of cl.lat and cl.lng. it returns a
+        // promise.
+        lookUpGp(cl)
+        .then(function (liv) {
+          console.log('fiii');
+          cl.$Promise.resolve(liv);
+          if (queueLocationData.length) {
+            setTimeout(function () {
+              self.execGPQuery();
+            }, 2500);
+            // self.execGPQuery();
+          } else {
+            self.isQuerying = false;
+          }
+        });
+
+      } else {
+        self.isQuerying = false;
+      }
     }
   };
 }]);

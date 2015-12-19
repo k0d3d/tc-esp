@@ -30,22 +30,37 @@
 
             tr
               th.lighter Questions
-              th.col-md-3.lighter Comment
+              th.col-md-3.lighter Response
               th.lighter Triggered At
               th.lighter Response Time
-              th.lighter Response
+              //- th.lighter Response
           tbody
 
             tr(ng-repeat="f in fd.questions")
               td
                 | {{f.question}}
               td
-                span {{f.answers[0].answer || '--'}}
+                i.gi(ng-show="f.answers[0].decision", style="color: green") Yes
+                i.gi(ng-hide="f.answers[0].decision !== false", style="color: red") No
+                .btn-group
+                  a.btn.btn-default(ng-click="current_feedback_view == 'comment'", ng-class="{'btn-assertive' : current_feedback_view == 'comment'}")
+                    span.fa-stack.fa-sm
+                      i.fa.fa-comment.fa-stack-2x
+                      i.fa.fa-check-circle.fa-stack-1x
+                  a.btn.btn-default(ng-click="mainCfg.cordovaCapture('image', _feedback.payload); current_feedback_view = 'image'", ng-class="{'btn-assertive' : current_feedback_view == 'image'}")
+                    span.fa-stack.fa-sm
+                      i.fa.fa-picture-o.fa-stack-2x
+                      i.fa.fa-check-circle.fa-stack-1x
+                  a.btn.btn-default(ng-click="mainCfg.cordovaCapture('video', _feedback.payload);current_feedback_view == 'video'", ng-class="{'btn-assertive' : current_feedback_view == 'video'}")
+                    span.fa-stack.fa-sm
+                      i.fa.fa-video-camera.fa-stack-2x
+                      i.fa.fa-check-circle.fa-stack-1x
+
               td
                 span(ng-show="f.answers[0].dateTriggered ") {{f.answers[0].dateTriggered | date: 'medium'}}
                 span(ng-show="!f.answers[0].dateTriggered") Not Asked
               td
                 | {{f.answers[0].timeUpdated | date: 'medium'}}
-              td
-                i.gi.gi-thumbs_up(ng-show="f.answers[0].decision", style="color: green")
-                i.gi.gi-thumbs_down(ng-hide="f.answers[0].decision !== false", style="color: red")
+
+          tfoot
+            pagination(page-to="turnPage")

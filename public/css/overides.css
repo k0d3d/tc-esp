@@ -1,3 +1,11 @@
 .table.feedback-grid thead > tr > th.lighter {
   font-weight: 200;
 }
+
+.fa-stack >.fa-check-circle{
+    color: #31D209;
+    position: relative;
+    right: 0px;
+    top: -8px;
+    left: 10px;
+}
