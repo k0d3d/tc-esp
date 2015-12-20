@@ -14,8 +14,7 @@
   .row
     .block
       .table-options.clearfix
-        pagination.pull-right(page-to="turnPage")
-        pagination.pull-right(page-to="turnPage")
+        pagination.pull-right.animation-dare(page-to="turnPage(qry)")
         .btn-group.btn-group-sm.pull-left(data-toggle='buttons')
             form.navbar-form-custom(role='search', ng-submit="submit_search(qry)")
               .form-group
@@ -55,14 +54,15 @@
               td {{place.category}}
               td {{place.author | author_field}}
               td
-                a.label.label-warning(href='javascript:void(0)') {{place.dateAdded | date:'medium'}}
-                p.label.label-warning(href='javascript:void(0)') <span city-state="place">{{place.formatted_address}}</span>
+                a.label.label-warning(href='#') {{place.dateAdded | date:'medium'}}
+                p.label.label-warning.animation-target(href='#', ng-show="place.formatted_address") <span city-state="place">{{place.formatted_address}}</span>
               td.text-center
-
-          tfoot
             tr
               td
-                pagination.pull-right(page-to="turnPage")
-
-
-      // END Table Styles Content
+      .table-options.clearfix
+        pagination.pull-right.animation-dare(page-to="turnPage(qry)")
+        .btn-group.btn-group-sm.pull-left(data-toggle='buttons')
+            form.navbar-form-custom(role='search', ng-submit="submit_search(qry)")
+              .form-group
+                input#top-search.form-control(type='text', name='qry', ng-model="qry" placeholder='Search..')
+        .clearfix

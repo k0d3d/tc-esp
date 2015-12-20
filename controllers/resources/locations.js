@@ -13,13 +13,16 @@ function process_request_all_locations (requestInstance, req, res, next) {
       qs: req.query,
       json: true
     }, function (err, resp, bd) {
+
       if (err) {
         next(err);
       }
       if (resp && resp.statusCode < 400) {
+        console.log('lesser');
         res.json(bd);
       } else {
-        res.status(resp.statusCode);
+        console.log('more');
+        res.status(resp.statusCode).end();
       }
     });
 }

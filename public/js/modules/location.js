@@ -28,12 +28,17 @@ locations.controller('LocationController', ['$scope', 'LocationService', functio
   });
 
   $scope.turnPage = function (qry) {
-    LocationService.query(angular.extend({}, $scope._viewOptions, qry))
+    LocationService.query(angular.extend({}, $scope._viewOptions, qry.options))
     .$promise
     .then(function (response) {
+      //update our collection
       $scope.places_list =  response;
+      //run this so the directive can handle success,
+      //in this case, increment or decrement the currentPage
+      //variable.
+      qry.callback(response);
     });
-  }
+  };
 
   $scope.submit_search = function submit_search (qry) {
     LocationService.query({
@@ -86,23 +91,44 @@ locations.directive('pagination', [function(){
     function link(scope, element, attrs){
       scope.pageno = 0;
       scope.limit = 10;
+      var currentPage = 0,
+          targetPageNo = 0;
+      var args = {
+        qry:{
+          options: {},
+          callback: function(r){
+            // are we going to the next page?
+            if(targetPageNo > currentPage) {
+              currentPage++;
+            } else
+            //are we heading to the previous page?
+            if (targetPageNo < currentPage) {
+              currentPage--;
+            }
+            scope.currentPage = currentPage;
+          }
+        }
+      };
+
       $('button.prevbtn', element).on('click', function(e){
-        var page = scope.pageno - 1;
-        if(scope.pageno === 1) return false;
-        scope.pageTo({pageNo: page, limit: scope.limit, cb: function(r){
-          if(r) scope.pageno--;
-        }});
+        if(currentPage <= 0) return false;
+        targetPageNo = currentPage - 1;
+        args.qry.options.page = targetPageNo;
+        args.qry.options.rpp = scope.limit;
+        scope.pageTo(args);
       });
       $('button.nextbtn', element).on('click', function(e){
-        var page = scope.pageno + 1;
-        scope.pageTo({pageNo: page, limit: scope.limit, cb: function(r){
-          if(r) scope.pageno++;
-        }});
+        targetPageNo = currentPage + 1;
+        args.qry.options.page = targetPageNo;
+        args.qry.options.rpp = scope.limit;
+        scope.pageTo(args);
       });
+
       scope.pagelimit = function(limit){
-        scope.pageTo({pageNo: scope.pageno, limit: limit, cb: function(r){
-          if(r) scope.limit = limit;
-        }});
+        scope.pageTo(args);
+        //   {pageNo: scope.pageno, limit: limit, cb: function(r){
+        //   if(r) scope.limit = limit;
+        // }});
       };
     }
     return {

@@ -144,12 +144,11 @@ MapApp.service('gpService', ['$http', '$q', function ($http, $q) {
         // promise.
         lookUpGp(cl)
         .then(function (liv) {
-          console.log('fiii');
           cl.$Promise.resolve(liv);
           if (queueLocationData.length) {
             setTimeout(function () {
               self.execGPQuery();
-            }, 2500);
+            }, 2000);
             // self.execGPQuery();
           } else {
             self.isQuerying = false;
