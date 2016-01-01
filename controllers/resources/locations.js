@@ -3,7 +3,7 @@ var
     request = require('request'),
     config = require('config'),
     util = require('util'),
-    xlsx = require('excel-export'),
+    // xlsx = require('excel-export'),
     Utils = require('../../lib/utility');
 
 
@@ -18,10 +18,25 @@ function process_request_all_locations (requestInstance, req, res, next) {
         next(err);
       }
       if (resp && resp.statusCode < 400) {
-        console.log('lesser');
         res.json(bd);
       } else {
-        console.log('more');
+        res.status(resp.statusCode).end();
+      }
+    });
+}
+function process_request_attach_locations_to_user (requestInstance, req, res, next) {
+    requestInstance.get({
+      url: config.tagChiefOAuth.endpoints.locations.query_all,
+      qs: req.query,
+      json: true
+    }, function (err, resp, bd) {
+
+      if (err) {
+        next(err);
+      }
+      if (resp && resp.statusCode < 400) {
+        res.json(bd);
+      } else {
         res.status(resp.statusCode).end();
       }
     });
@@ -38,8 +53,15 @@ module.exports = function (resource) {
       },
       baseUrl: config.tagChiefOAuth.server
     });
+
+    req.query.entry_type = req.query.entry_type || 'system';
+
     if (req.query.listType === 'search' || req.query.listType === 'list_all_locations'){
       return process_request_all_locations(all_locations_request, req, res, next);
+    }
+
+    if (req.query.listType === 'attach_locations_to_user') {
+      return process_request_attach_locations_to_user(all_locations_request, req, res, next);
     }
 
     next(new Error('Invalid Request'));
@@ -63,6 +85,7 @@ module.exports = function (resource) {
       if (resp && resp.statusCode < 400) {
         res.json(bd);
       } else {
+        res.status(401);
         next(new Error('Unknown Connection Error'));
       }
     });

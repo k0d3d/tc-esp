@@ -33,5 +33,38 @@
             "password": "c029d5dc-4cbb-4aa7-a6c8-559fc83cf8b0",
             "host": "smtp.postmarkapp.com"
         }
+    },
+    "tagChiefOAuth": {
+        "server" : "http://localhost:3333/",
+        "authenticationUrl" : "/api/v1/users/auth",
+        "clientCheckUrl" : "/api/v1/clients/%s?field_type=email",
+        "clientCreateUrl" : "/api/v1/clients",
+        "authorizationUrl" : "/oauth/token",
+        "redirectUrl": "/auth_callback",
+        "endpoints" : {
+            "users" : {
+                "query_all" : "/api/v2/users"
+            },
+            "stats" : {
+                "query_all": "/api/v2/stats",
+                "one_location": "/api/v2/stats/%s"
+            },
+            "locations" : {
+                "query_all": "/api/v2/locations",
+                "one_location": "/api/v2/locations/%s"
+            },
+            "feedback": {
+                "query_all": "/api/v2/feedback"
+            },
+            "questions": {
+                "query_all": "/api/v2/questions",
+                "add": "/api/v2/questions",
+                "delete" : "/api/v2/questions/%s/delete",
+                "edit" : "/api/v2/questions/%s/edit",
+                "multi": "/api/v2/questions/multi",
+                "group" : "/api/v2/questions/group",
+                "assign" : "/api/v2/questions/assign"
+            }
+        }
     }
 }

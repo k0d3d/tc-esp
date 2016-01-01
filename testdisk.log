@@ -1,0 +1,418 @@
+
+
+Sun Dec 27 19:38:58 2015
+Command line: TestDisk
+
+TestDisk 6.14, Data Recovery Utility, July 2013
+Christophe GRENIER <grenier@cgsecurity.org>
+http://www.cgsecurity.org
+OS: Linux, kernel 3.19.0-41-generic (#46-Ubuntu SMP Fri Dec 4 18:18:11 UTC 2015) x86_64
+Compiler: GCC 4.9
+Compilation date: 2015-04-03T09:01:54
+ext2fs lib: 1.42.12, ntfs lib: libntfs-3g, reiserfs lib: none, ewf lib: none
+/dev/sda: LBA, HPA, LBA48, DCO support
+/dev/sda: size       1953525168 sectors
+/dev/sda: user_max   1953525168 sectors
+/dev/sda: native_max 1953525168 sectors
+/dev/sda: dco        1953525168 sectors
+Warning: can't get size for Disk /dev/mapper/control - 0 B - 1 sectors, sector size=512
+/dev/mapper/fedora-home: LBA, HPA, LBA48, DCO support
+/dev/mapper/fedora-home: size       346693632 sectors
+/dev/mapper/fedora-home: user_max   1953525168 sectors
+/dev/mapper/fedora-home: native_max 1953525168 sectors
+/dev/mapper/fedora-home: dco        1953525168 sectors
+/dev/mapper/fedora-root: LBA, HPA, LBA48, DCO support
+/dev/mapper/fedora-root: size       104857600 sectors
+/dev/mapper/fedora-root: user_max   1953525168 sectors
+/dev/mapper/fedora-root: native_max 1953525168 sectors
+/dev/mapper/fedora-root: dco        1953525168 sectors
+/dev/mapper/fedora-swap: LBA, HPA, LBA48, DCO support
+/dev/mapper/fedora-swap: size       16023552 sectors
+/dev/mapper/fedora-swap: user_max   1953525168 sectors
+/dev/mapper/fedora-swap: native_max 1953525168 sectors
+/dev/mapper/fedora-swap: dco        1953525168 sectors
+/dev/mapper/ubuntu--vg-kubuntu: LBA, HPA, LBA48, DCO support
+/dev/mapper/ubuntu--vg-kubuntu: size       80527360 sectors
+/dev/mapper/ubuntu--vg-kubuntu: user_max   1953525168 sectors
+/dev/mapper/ubuntu--vg-kubuntu: native_max 1953525168 sectors
+/dev/mapper/ubuntu--vg-kubuntu: dco        1953525168 sectors
+/dev/mapper/ubuntu--vg-root: LBA, HPA, LBA48, DCO support
+/dev/mapper/ubuntu--vg-root: size       1300234240 sectors
+/dev/mapper/ubuntu--vg-root: user_max   1953525168 sectors
+/dev/mapper/ubuntu--vg-root: native_max 1953525168 sectors
+/dev/mapper/ubuntu--vg-root: dco        1953525168 sectors
+/dev/mapper/ubuntu--vg-swap_1: LBA, HPA, LBA48, DCO support
+/dev/mapper/ubuntu--vg-swap_1: size       16400384 sectors
+/dev/mapper/ubuntu--vg-swap_1: user_max   1953525168 sectors
+/dev/mapper/ubuntu--vg-swap_1: native_max 1953525168 sectors
+/dev/mapper/ubuntu--vg-swap_1: dco        1953525168 sectors
+/dev/dm-0: LBA, HPA, LBA48, DCO support
+/dev/dm-0: size       16023552 sectors
+/dev/dm-0: user_max   1953525168 sectors
+/dev/dm-0: native_max 1953525168 sectors
+/dev/dm-0: dco        1953525168 sectors
+/dev/dm-1: LBA, HPA, LBA48, DCO support
+/dev/dm-1: size       346693632 sectors
+/dev/dm-1: user_max   1953525168 sectors
+/dev/dm-1: native_max 1953525168 sectors
+/dev/dm-1: dco        1953525168 sectors
+/dev/dm-2: LBA, HPA, LBA48, DCO support
+/dev/dm-2: size       104857600 sectors
+/dev/dm-2: user_max   1953525168 sectors
+/dev/dm-2: native_max 1953525168 sectors
+/dev/dm-2: dco        1953525168 sectors
+/dev/dm-3: LBA, HPA, LBA48, DCO support
+/dev/dm-3: size       1300234240 sectors
+/dev/dm-3: user_max   1953525168 sectors
+/dev/dm-3: native_max 1953525168 sectors
+/dev/dm-3: dco        1953525168 sectors
+/dev/dm-4: LBA, HPA, LBA48, DCO support
+/dev/dm-4: size       16400384 sectors
+/dev/dm-4: user_max   1953525168 sectors
+/dev/dm-4: native_max 1953525168 sectors
+/dev/dm-4: dco        1953525168 sectors
+/dev/dm-5: LBA, HPA, LBA48, DCO support
+/dev/dm-5: size       80527360 sectors
+/dev/dm-5: user_max   1953525168 sectors
+/dev/dm-5: native_max 1953525168 sectors
+/dev/dm-5: dco        1953525168 sectors
+Hard disk list
+Disk /dev/sda - 1000 GB / 931 GiB - CHS 121601 255 63, sector size=512 - TOSHIBA MQ01ABD100, S/N:138HS1Q7S, FW:AX003J
+Disk /dev/mapper/fedora-home - 177 GB / 165 GiB - 346693632 sectors, sector size=512 - TOSHIBA MQ01ABD100, S/N:138HS1Q7S, FW:AX003J
+Disk /dev/mapper/fedora-root - 53 GB / 50 GiB - 104857600 sectors, sector size=512 - TOSHIBA MQ01ABD100, S/N:138HS1Q7S, FW:AX003J
+Disk /dev/mapper/fedora-swap - 8204 MB / 7824 MiB - 16023552 sectors, sector size=512 - TOSHIBA MQ01ABD100, S/N:138HS1Q7S, FW:AX003J
+Disk /dev/mapper/ubuntu--vg-kubuntu - 41 GB / 38 GiB - 80527360 sectors, sector size=512 - TOSHIBA MQ01ABD100, S/N:138HS1Q7S, FW:AX003J
+Disk /dev/mapper/ubuntu--vg-root - 665 GB / 620 GiB - 1300234240 sectors, sector size=512 - TOSHIBA MQ01ABD100, S/N:138HS1Q7S, FW:AX003J
+Disk /dev/mapper/ubuntu--vg-swap_1 - 8396 MB / 8008 MiB - 16400384 sectors, sector size=512 - TOSHIBA MQ01ABD100, S/N:138HS1Q7S, FW:AX003J
+Disk /dev/dm-0 - 8204 MB / 7824 MiB - 16023552 sectors, sector size=512 - TOSHIBA MQ01ABD100, S/N:138HS1Q7S, FW:AX003J
+Disk /dev/dm-1 - 177 GB / 165 GiB - 346693632 sectors, sector size=512 - TOSHIBA MQ01ABD100, S/N:138HS1Q7S, FW:AX003J
+Disk /dev/dm-2 - 53 GB / 50 GiB - 104857600 sectors, sector size=512 - TOSHIBA MQ01ABD100, S/N:138HS1Q7S, FW:AX003J
+Disk /dev/dm-3 - 665 GB / 620 GiB - 1300234240 sectors, sector size=512 - TOSHIBA MQ01ABD100, S/N:138HS1Q7S, FW:AX003J
+Disk /dev/dm-4 - 8396 MB / 8008 MiB - 16400384 sectors, sector size=512 - TOSHIBA MQ01ABD100, S/N:138HS1Q7S, FW:AX003J
+Disk /dev/dm-5 - 41 GB / 38 GiB - 80527360 sectors, sector size=512 - TOSHIBA MQ01ABD100, S/N:138HS1Q7S, FW:AX003J
+
+Partition table type (auto): None
+Disk /dev/dm-1 - 177 GB / 165 GiB - TOSHIBA MQ01ABD100
+Partition table type: Intel
+
+Analyse Disk /dev/dm-1 - 177 GB / 165 GiB - 346693632 sectors
+Current partition structure:
+
+Partition sector doesn't have the endmark 0xAA55
+
+search_part()
+Disk /dev/dm-1 - 177 GB / 165 GiB - 346693632 sectors
+
+recover_EXT2: s_block_group_nr=0/319, s_mnt_count=2/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 10485504
+recover_EXT2: part_size 83884032
+     Linux                     224638   84108669   83884032 [cloudimg-rootfs]
+     ext4 blocksize=4096 Large file Sparse superblock Recover, 42 GB / 39 GiB
+check_FAT: Unusual media descriptor (0xf0!=0xf8)
+FAT32 at 85054560/0/1
+FAT1 : 32-2079
+FAT2 : 2080-4127
+start_rootdir : 4128 root cluster : 2
+Data : 4128-16777183
+sectors : 16777215
+cluster_size : 64
+no_of_cluster : 262079 (2 - 262080)
+fat_length 2048 calculated 2048
+FAT differs, FAT sectors=0-16/2048
+heads/cylinder 255 (FAT) != 1 (HD)
+sect/track 63 (FAT) != 1 (HD)
+set_FAT_info: name from BS used
+
+FAT32 at 85054560/0/1
+     FAT32 LBA               85054560  101831774   16777215 [NO NAME]
+     FAT32, blocksize=32768, 8589 MB / 8191 MiB
+BAD_RS LBA=2352748045 764
+check_FAT: can't read FAT boot sector
+check_part_i386 failed for partition type 01
+     FAT12                 2352748045 4387704750 2034956706
+This partition ends after the disk limits. (start=2352748045, size=2034956706, end=4387704750, disk end=346693632)
+
+LVM magic value at 104320674/0/1
+
+LVM magic value at 104325280/0/1
+
+block_group_nr 9
+
+recover_EXT2: "e2fsck -b 294912 -B 4096 device" may be needed
+recover_EXT2: s_block_group_nr=9/37, s_mnt_count=0/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8112
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 1230848
+recover_EXT2: part_size 9846784
+     Linux                  102092870  111939653    9846784
+     ext4 blocksize=4096 Large file Sparse superblock Backup superblock, 5041 MB / 4808 MiB
+
+recover_EXT2: s_block_group_nr=0/319, s_mnt_count=2/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 10485504
+recover_EXT2: part_size 83884032
+     Linux                  112209790  196093821   83884032 [cloudimg-rootfs]
+     ext4 blocksize=4096 Large file Sparse superblock Recover, 42 GB / 39 GiB
+
+recover_EXT2: s_block_group_nr=0/319, s_mnt_count=173/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 10485504
+recover_EXT2: part_size 83884032
+     Linux                  196473824  280357855   83884032 [cloudimg-rootfs]
+     ext4 blocksize=4096 Large file Sparse superblock Recover, 42 GB / 39 GiB
+BAD_RS LBA=1211590508 1209
+check_FAT: can't read FAT boot sector
+check_part_i386 failed for partition type 0B
+     FAT32                 1211590508 4742537783 3530947276
+This partition ends after the disk limits. (start=1211590508, size=3530947276, end=4742537783, disk end=346693632)
+
+LVM magic value at 285189880/0/1
+
+LVM magic value at 285189882/0/1
+
+LVM magic value at 285189883/0/1
+
+LVM magic value at 285189904/0/1
+
+LVM magic value at 286859228/0/1
+
+recover_EXT2: s_block_group_nr=0/1, s_mnt_count=0/4294967295, s_blocks_per_group=32768, s_inodes_per_group=6400
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 51200
+recover_EXT2: part_size 409600
+     Linux                  287621120  288030719     409600
+     ext4 blocksize=4096 Large file Sparse superblock, 209 MB / 200 MiB
+BAD_RS LBA=1679285055 1137
+check_FAT: can't read FAT boot sector
+check_part_i386 failed for partition type 04
+     FAT16 <32M            1679285055 5884290147 4205005093
+This partition ends after the disk limits. (start=1679285055, size=4205005093, end=5884290147, disk end=346693632)
+BAD_RS LBA=847076111 297
+check_FAT: can't read FAT boot sector
+check_part_i386 failed for partition type 04
+     FAT16 <32M             847076111 1564504850  717428740
+This partition ends after the disk limits. (start=847076111, size=717428740, end=1564504850, disk end=346693632)
+BAD_RS LBA=2367551702 122
+check_FAT: can't read FAT boot sector
+check_part_i386 failed for partition type 06
+     FAT16 >32M            2367551702 3087297243  719745542
+This partition ends after the disk limits. (start=2367551702, size=719745542, end=3087297243, disk end=346693632)
+
+recover_EXT2: s_block_group_nr=0/4, s_mnt_count=0/4294967295, s_blocks_per_group=32768, s_inodes_per_group=7040
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 140800
+recover_EXT2: part_size 1126400
+     Linux                  294535168  295661567    1126400
+     ext4 blocksize=4096 Large file Sparse superblock, 576 MB / 550 MiB
+
+LVM magic value at 296465360/0/1
+
+LVM magic value at 296465362/0/1
+
+LVM magic value at 296465363/0/1
+
+LVM magic value at 296465384/0/1
+FAT32 at 297459810/0/1
+Bad root_cluster
+check_FAT: Unusual media descriptor (0xf0!=0xf8)
+FAT12 at 297459811/0/1
+FAT1 : 1-9
+FAT2 : 10-18
+start_rootdir : 19
+Data : 33-2879
+sectors : 2880
+cluster_size : 1
+no_of_cluster : 2847 (2 - 2848)
+fat_length 9 calculated 9
+FAT differs, FAT sectors=0-9/9
+heads/cylinder 2 (FAT) != 1 (HD)
+sect/track 18 (FAT) != 1 (HD)
+
+FAT12 at 297459811/0/1
+     FAT12                  297459811  297462690       2880 [NO NAME]
+     FAT12, blocksize=512, 1474 KB / 1440 KiB
+
+recover_EXT2: s_block_group_nr=0/40, s_mnt_count=4/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 1310720
+recover_EXT2: part_size 10485760
+     Linux                  300488880  310974639   10485760
+     ext4 blocksize=4096 Large file Sparse superblock Recover, 5368 MB / 5120 MiB
+BAD_RS LBA=1046397462 679
+check_FAT: can't read FAT boot sector
+check_part_i386 failed for partition type 0B
+     FAT32                 1046397462 5158542091 4112144630
+This partition ends after the disk limits. (start=1046397462, size=4112144630, end=5158542091, disk end=346693632)
+BAD_RS LBA=380556660 618
+check_FAT: can't read FAT boot sector
+check_part_i386 failed for partition type 04
+     FAT16 <32M             380556660  482882702  102326043
+This partition ends after the disk limits. (start=380556660, size=102326043, end=482882702, disk end=346693632)
+
+recover_EXT2: s_block_group_nr=0/40, s_mnt_count=17/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 1310720
+recover_EXT2: part_size 10485760
+     Linux                  311478168  321963927   10485760
+     ext4 blocksize=4096 Large file Sparse superblock Recover, 5368 MB / 5120 MiB
+Search for partition aborted
+Disk /dev/dm-1 - 177 GB / 165 GiB - 346693632 sectors
+Check the harddisk size: HD jumpers settings, BIOS detection...
+The harddisk (177 GB / 165 GiB) seems too small! (< 3012 GB / 2805 GiB)
+The following partitions can't be recovered:
+     FAT16 <32M             380556660  482882702  102326043
+     FAT16 <32M             847076111 1564504850  717428740
+     FAT32                 1046397462 5158542091 4112144630
+     FAT32                 1211590508 4742537783 3530947276
+     FAT16 <32M            1679285055 5884290147 4205005093
+     FAT12                 2352748045 4387704750 2034956706
+     FAT16 >32M            2367551702 3087297243  719745542
+get_geometry_from_list_part_aux head=1 nbr=20
+get_geometry_from_list_part_aux head=8 nbr=11
+get_geometry_from_list_part_aux head=16 nbr=9
+get_geometry_from_list_part_aux head=32 nbr=7
+get_geometry_from_list_part_aux head=64 nbr=4
+get_geometry_from_list_part_aux head=128 nbr=4
+get_geometry_from_list_part_aux head=240 nbr=2
+
+Results
+   * Linux                     224638   84108669   83884032 [cloudimg-rootfs]
+     ext4 blocksize=4096 Large file Sparse superblock Recover, 42 GB / 39 GiB
+   P FAT32 LBA               85054560  101831774   16777215 [NO NAME]
+     FAT32, blocksize=32768, 8589 MB / 8191 MiB
+   P Linux                  102092870  111939653    9846784
+     ext4 blocksize=4096 Large file Sparse superblock Backup superblock, 5041 MB / 4808 MiB
+   L Linux                  112209790  196093821   83884032 [cloudimg-rootfs]
+     ext4 blocksize=4096 Large file Sparse superblock Recover, 42 GB / 39 GiB
+   L Linux                  196473824  280357855   83884032 [cloudimg-rootfs]
+     ext4 blocksize=4096 Large file Sparse superblock Recover, 42 GB / 39 GiB
+   L Linux                  287621120  288030719     409600
+     ext4 blocksize=4096 Large file Sparse superblock, 209 MB / 200 MiB
+   L Linux                  294535168  295661567    1126400
+     ext4 blocksize=4096 Large file Sparse superblock, 576 MB / 550 MiB
+   L FAT12                  297459811  297462690       2880 [NO NAME]
+     FAT12, blocksize=512, 1474 KB / 1440 KiB
+   L Linux                  300488880  310974639   10485760
+     ext4 blocksize=4096 Large file Sparse superblock Recover, 5368 MB / 5120 MiB
+   L Linux                  311478168  321963927   10485760
+     ext4 blocksize=4096 Large file Sparse superblock Recover, 5368 MB / 5120 MiB
+
+
+dir_partition inode=2
+   L Linux                  311478168  321963927   10485760
+     ext4 blocksize=4096 Large file Sparse superblock Recover, 5368 MB / 5120 MiB
+ext2fs_dir_iterate failed with error 1.
+Directory /
+
+
+dir_partition inode=2
+   L Linux                  196473824  280357855   83884032 [cloudimg-rootfs]
+     ext4 blocksize=4096 Large file Sparse superblock Recover, 42 GB / 39 GiB
+ext2fs_dir_iterate failed with error 1.
+Directory /
+
+
+dir_partition inode=0
+   P FAT32 LBA               85054560  101831774   16777215 [NO NAME]
+     FAT32, blocksize=32768, 8589 MB / 8191 MiB
+FAT: cluster=2(0x2), pos=85058688
+Directory /
+ 235890176 drwxr-xr-x     0      0 1992370191 28-Oct-2029 01:40 À¾
+ 96467010 -rwxr-xr-x     0      0 2202533973 25-Nov-1959 17:31 ò\c.
+ 69201964 -rwxr-xr-x     0      0     21951 18-Jan-1987 00:00 Ä(ÃD
+
+dir_partition inode=235890176
+   P FAT32 LBA               85054560  101831774   16777215 [NO NAME]
+     FAT32, blocksize=32768, 8589 MB / 8191 MiB
+FAT: cluster=235890176(0xe0f6600), pos=2297127936
+FAT: Can't read directory cluster.
+Directory /À¾
+FAT: cluster=2(0x2), pos=85058688
+Directory /
+ 235890176 drwxr-xr-x     0      0 1992370191 28-Oct-2029 01:40 À¾
+ 96467010 -rwxr-xr-x     0      0 2202533973 25-Nov-1959 17:31 ò\c.
+ 69201964 -rwxr-xr-x     0      0     21951 18-Jan-1987 00:00 Ä(ÃD
+
+   P Linux                  102092870  111939653    9846784
+     ext4 blocksize=4096 Large file Sparse superblock Backup superblock, 5041 MB / 4808 MiB
+Can't open filesystem. Filesystem seems damaged.
+
+
+dir_partition inode=2
+   L Linux                  112209790  196093821   83884032 [cloudimg-rootfs]
+     ext4 blocksize=4096 Large file Sparse superblock Recover, 42 GB / 39 GiB
+ext2fs_dir_iterate failed with error 2133571387.
+Directory /
+
+
+dir_partition inode=2
+   L Linux                  196473824  280357855   83884032 [cloudimg-rootfs]
+     ext4 blocksize=4096 Large file Sparse superblock Recover, 42 GB / 39 GiB
+ext2fs_dir_iterate failed with error 1.
+Directory /
+add_ext_part_i386: max
+add_ext_part_i386: max
+
+interface_write()
+ 1 * Linux                     224638   84108669   83884032 [cloudimg-rootfs]
+ 2 P FAT32 LBA               85054560  101831774   16777215 [NO NAME]
+ 3 P Linux                  102092870  111939653    9846784
+ 4 E extended LBA           111939654  346693630  234753977
+ 5 L Linux                  112209790  196093821   83884032 [cloudimg-rootfs]
+ 6 L Linux                  196473824  280357855   83884032 [cloudimg-rootfs]
+ 7 L Linux                  287621120  288030719     409600
+ 8 L Linux                  294535168  295661567    1126400
+ 9 L FAT12                  297459811  297462690       2880 [NO NAME]
+10 L Linux                  300488880  310974639   10485760
+11 L Linux                  311478168  321963927   10485760
+simulate write!
+
+write_mbr_i386: starting...
+Store new MBR code
+write_all_log_i386: starting...
+write_all_log_i386: CHS: 111939654/0/1,lba=111939654
+write_all_log_i386: CHS: 196473823/0/1,lba=196473823
+write_all_log_i386: CHS: 287621119/0/1,lba=287621119
+write_all_log_i386: CHS: 294535167/0/1,lba=294535167
+write_all_log_i386: CHS: 297459810/0/1,lba=297459810
+write_all_log_i386: CHS: 300488879/0/1,lba=300488879
+write_all_log_i386: CHS: 311478167/0/1,lba=311478167
+
+Analyse Disk /dev/dm-1 - 177 GB / 165 GiB - 346693632 sectors
+Current partition structure:
+
+Partition sector doesn't have the endmark 0xAA55
+
+search_part()
+Disk /dev/dm-1 - 177 GB / 165 GiB - 346693632 sectors
+
+recover_EXT2: s_block_group_nr=0/319, s_mnt_count=2/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 10485504
+recover_EXT2: part_size 83884032
+     Linux                     224638   84108669   83884032 [cloudimg-rootfs]
+     ext4 blocksize=4096 Large file Sparse superblock Recover, 42 GB / 39 GiB
+Search for partition aborted
+get_geometry_from_list_part_aux head=1 nbr=2
+
+Results
+   * Linux                     224638   84108669   83884032 [cloudimg-rootfs]
+     ext4 blocksize=4096 Large file Sparse superblock Recover, 42 GB / 39 GiB
+
+
+dir_partition inode=2
+   * Linux                     224638   84108669   83884032 [cloudimg-rootfs]
+     ext4 blocksize=4096 Large file Sparse superblock Recover, 42 GB / 39 GiB
+ext2fs_dir_iterate failed with error 2133571387.
+Directory /
+
+interface_write()
+ 1 * Linux                     224638   84108669   83884032 [cloudimg-rootfs]
+simulate write!
+
+write_mbr_i386: starting...
+Store new MBR code
+write_all_log_i386: starting...
+No extended partition
+
+TestDisk exited normally.

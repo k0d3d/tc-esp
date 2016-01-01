@@ -5,8 +5,10 @@ var app = angular.module('tagChiefStatsApp', [
   'locations',
   'services',
   'ngResource',
+  'tc.questions.ng',
+  'tc.stats.ng',
   'GoogleMapsInitializer',
-  'tagChiefStatsApp.config',
+  'tc.config.ng',
   ]);
 
 
@@ -36,7 +38,7 @@ app.config([
       },
     })
     .state('locations', {
-      url: '/locations',
+      url: '/locations?entry_type?category?is_search?lat?lng?name?page',
       views: {
         'pageContent' : {
           templateUrl: '/locations/places',
@@ -110,6 +112,22 @@ app.config([
 app.controller('main', ['$scope', 'requests', function ($scope, requests) {
   $scope.do_logout = function do_logout () {
     requests.logout();
+  };
+}]);
+
+app.directive('pageContent', [function () {
+  return {
+    restrict:'C',
+    link: function (s, e) {
+      $(window).on('resize', function() {
+        $(e).height($(window).height()).css({
+          'overflow-y': 'overlay'
+        });
+      });
+      $(e).height($(window).height()).css({
+          'overflow-y': 'overlay'
+        });
+    }
   };
 }]);
 

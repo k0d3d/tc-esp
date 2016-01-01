@@ -1,4 +1,5 @@
 var locations = angular.module('locations', []);
+
 locations.controller('ActivitiesController', ['$scope', 'FeedbackService', function ($scope, FeedbackService) {
   $scope._viewOptions = {
     page: 0,
@@ -14,43 +15,99 @@ locations.controller('ActivitiesController', ['$scope', 'FeedbackService', funct
     alert('An error occured when executing this operation. Admin has been notified');
   });
 }]);
-locations.controller('LocationController', ['$scope', 'LocationService', function ($scope, LocationService) {
+locations.controller('LocationController', ['$scope', 'LocationService', '$stateParams', '$state', function ($scope, LocationService, $stateParams, $state) {
   $scope._viewOptions = {
     page: 0,
     rpp: 10,
-    listType: 'list_all_locations'
+    listType: 'list_all_locations',
+    entry_type: $stateParams.entry_type
   };
-  // return;
-  LocationService.query($scope._viewOptions)
+
+
+  // find locations that match this criteria.
+  // extending the state params and the default
+  // view options
+  var opt = angular.extend({}, $scope._viewOptions, $stateParams);
+  LocationService.query(opt)
   .$promise
   .then(function (response) {
+    $scope.qry = _.omit($stateParams, ['rpp', 'listType', 'page', 'entry_type'])
     $scope.places_list =  response;
   });
 
   $scope.turnPage = function (qry) {
-    LocationService.query(angular.extend({}, $scope._viewOptions, qry.options))
-    .$promise
-    .then(function (response) {
-      //update our collection
-      $scope.places_list =  response;
-      //run this so the directive can handle success,
-      //in this case, increment or decrement the currentPage
-      //variable.
-      qry.callback(response);
+
+    var opt = angular.extend({}, $scope._viewOptions, qry.options, $stateParams);
+    $state.transitionTo($state.current, opt, {
+      reload: true, inherit: false, notify: true
     });
+    qry.callback();
+    // LocationService.query(angular.extend({}, $scope._viewOptions, qry.options, $stateParams))
+    // .$promise
+    // .then(function (response) {
+    //   //update our collection
+    //   $scope.places_list =  response;
+    //   //run this so the directive can handle success,
+    //   //in this case, increment or decrement the currentPage
+    //   //variable.
+    // });
   };
 
-  $scope.submit_search = function submit_search (qry) {
-    LocationService.query({
-      listType: 'search',
-      page: 0,
-      rpp: 20,
-      q: qry
-    })
-    .$promise
-    .then(function (response) {
-      $scope.places_list = response;
-    });
+  $scope.submit_search = function submit_search (qry, tag) {
+    qry.is_search = true;
+    //a collection with key as the field name.
+    //and a hash specifying the operator to use
+    //and the string or needle to be matched or
+    //found.
+    qry.search_query = [],
+    qry.conditions = {};
+    //set the author search definition
+    if (qry.author) {
+      qry.search_query.push({
+        'author': {
+          'operate':'equals',
+          'value': qry.author
+        }
+      });
+    }
+    //set the category definition
+    if (qry.category) {
+      qry.search_query.push({
+        'category': {
+          'operate':'equals',
+          'value': qry.category
+        }
+      });
+    }
+    //set the proxiity definition
+    if (qry.lat && qry.lng) {
+      // latitude: 6.5441483
+      // longitude: 3.360115
+
+      qry['conditions.max_distance'] = 1;
+    }
+
+    if (!tag) {
+
+      $state.transitionTo($state.current, qry, {
+        reload: true, inherit: false, notify: true
+      });
+
+    } else {
+
+      LocationService.query(angular.extend({}, qry, {
+        listType: 'attach_locations_to_user',
+        page: 0,
+        rpp: 20,
+        entry_type: qry.entry_type
+
+      }))
+      .$promise
+      .then(function (response) {
+        $scope.places_list = response;
+      });
+    }
+
   };
 
 }]);
@@ -89,7 +146,6 @@ locations.controller('FeedbackController', ['$scope', 'LocationService', '$state
 }]);
 locations.directive('pagination', [function(){
     function link(scope, element, attrs){
-      scope.pageno = 0;
       scope.limit = 10;
       var currentPage = 0,
           targetPageNo = 0;
@@ -125,9 +181,12 @@ locations.directive('pagination', [function(){
       });
 
       scope.pagelimit = function(limit){
+        args.qry.options.page = targetPageNo;
+        args.qry.options.rpp = limit;
         scope.pageTo(args);
+
         //   {pageNo: scope.pageno, limit: limit, cb: function(r){
-        //   if(r) scope.limit = limit;
+        //   if(r) scope.limit = limit; q`123456832
         // }});
       };
     }

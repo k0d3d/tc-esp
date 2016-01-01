@@ -55,3 +55,15 @@ services.factory('FeedbackService', ['$resource', function ($resource) {
     listType: '@listType',
   });
 }]);
+services.factory('QtnService', ['$resource', function ($resource) {
+
+  return $resource('/resource/questions', {
+    listType: '@listType',
+  });
+}]);
+services.factory('StatsService', ['$resource', function ($resource) {
+
+  return $resource('/resource/stats', {
+    listType: '@listType',
+  });
+}]);

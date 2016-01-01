@@ -1,5 +1,5 @@
 // Page content
-#page-content
+#page-content.page-content
   // Contacts Header
   .content-header
     .header-section
@@ -12,57 +12,99 @@
   // END Contacts Header
   // Main Row
   .row
-    .block
-      .table-options.clearfix
-        pagination.pull-right.animation-dare(page-to="turnPage(qry)")
-        .btn-group.btn-group-sm.pull-left(data-toggle='buttons')
-            form.navbar-form-custom(role='search', ng-submit="submit_search(qry)")
-              .form-group
-                input#top-search.form-control(type='text', name='qry', ng-model="qry" placeholder='Search..')
-        .clearfix
+    .col-md-8
+      .block
+        .table-options.clearfix
+          pagination.pull-right.animation-dare(page-to="turnPage(qry)")
+          .btn-group.btn-group-sm.pull-left(data-toggle='buttons')
+              form.navbar-form-custom(role='search', ng-submit="submit_search(qry)")
+                .form-group
+                  input#top-search.form-control(type='text', name='qry', ng-model="qry.name" placeholder='Quick Search')
+          .clearfix
 
-      .table-responsive
-        //
-          Available Table Classes:
-          'table'             - basic table
-          'table-bordered'    - table with full borders
-          'table-borderless'  - table with no borders
-          'table-striped'     - striped table
-          'table-condensed'   - table with smaller top and bottom cell padding
-          'table-hover'       - rows highlighted on mouse hover
-          'table-vcenter'     - middle align content vertically
-        table#general-table.table.table-striped.table-vcenter
-          thead
-            tr
-              th.text-center(style='width: 40px;')
-                input(type='checkbox')
-              th.text-center(style='width: 80px;')
-                i.gi.gi-user
-              th Location Name
-              th Category
-              th Author
-              th Added On
-              th.text-center(style='width: 150px;')
-          tbody
-            tr(ng-repeat="place in places_list")
-              td.text-center
-                input#checkbox1-1(type='checkbox', name='checkbox1-1')
-              td.text-center
-                img.img-circle(src='img/placeholders/avatars/avatar16.png', alt='avatar')
-              td
-                a(ui-sref='location({locationId: place._id})') {{place.name}}
-              td {{place.category}}
-              td {{place.author | author_field}}
-              td
-                a.label.label-warning(href='#') {{place.dateAdded | date:'medium'}}
-                p.label.label-warning.animation-target(href='#', ng-show="place.formatted_address") <span city-state="place">{{place.formatted_address}}</span>
-              td.text-center
-            tr
-              td
-      .table-options.clearfix
-        pagination.pull-right.animation-dare(page-to="turnPage(qry)")
-        .btn-group.btn-group-sm.pull-left(data-toggle='buttons')
-            form.navbar-form-custom(role='search', ng-submit="submit_search(qry)")
-              .form-group
-                input#top-search.form-control(type='text', name='qry', ng-model="qry" placeholder='Search..')
-        .clearfix
+        .table-responsive
+          //
+            Available Table Classes:
+            'table'             - basic table
+            'table-bordered'    - table with full borders
+            'table-borderless'  - table with no borders
+            'table-striped'     - striped table
+            'table-condensed'   - table with smaller top and bottom cell padding
+            'table-hover'       - rows highlighted on mouse hover
+            'table-vcenter'     - middle align content vertically
+          table#general-table.table.table-striped.table-vcenter
+            thead
+              tr
+                th.text-center(style='width: 40px;')
+                  input(type='checkbox')
+                th.text-center(style='width: 80px;')
+                  i.gi.gi-user
+                th Location Name
+                th Category
+                th Author
+                th Added On
+                th.text-center(style='width: 150px;')
+            tbody
+              tr(ng-repeat="place in places_list")
+                td.text-center
+                  input#checkbox1-1(type='checkbox', name='checkbox1-1')
+                td.text-center
+                  img.img-circle(src='img/placeholders/avatars/avatar16.png', alt='avatar')
+                td
+                  p
+                    a(ui-sref='location({locationId: place._id})') {{place.name}}
+                  p.animation-target(href='#', ng-show="place.formatted_address") <span city-state="place">{{place.formatted_address}}</span>
+                td {{place.category}}
+                td {{place.author | author_field}}
+                td
+                  a.label.label-warning(href='#') {{place.dateAdded | date:'medium'}}
+
+                td.text-center
+              tr
+                td
+        .table-options.clearfix
+          pagination.pull-right.animation-dare(page-to="turnPage(qry)")
+          .btn-group.btn-group-sm.pull-left(data-toggle='buttons')
+              form.navbar-form-custom(role='search', ng-submit="submit_search(qry)")
+                .form-group
+                  input#top-search.form-control(type='text', name='qry.name', ng-model="qry.name" placeholder='Quick Search..')
+          .clearfix
+
+    .col-md-4
+      .block
+        .block-title
+          h2 Refine Search
+        form.form-horizontal.form-bordered(onsubmit='return false;', ng-submit="submit_search(qry)", ng-init="qry.entry_type= 'system'")
+          .form-group
+            label.col-md-3.control-label(for='location-name-field') Name
+            .col-md-9
+              input#location-name-field.form-control(ng-model="qry.name" type='text', name='location-name-field', placeholder='Tejuosho Market..')
+              span.help-block Please enter the name of the location
+          .form-group
+            label.col-md-3.control-label(for='author-name-field') Author
+            .col-md-9
+              input#author-name-field.form-control(ng-model="qry.author" type='text', name='author-name-field', placeholder='info@tagchief.com')
+              span.help-block Enter the email address for the account that owns this location.
+          .form-group
+            label.col-md-3.control-label(for='coords-point-field') Coords
+            .col-md-4
+              input#coords-point-field.form-control(ng-model="qry.lng" type='text', name='coords-point-field', placeholder='Longitude')
+              span.help-block Include locations within 1km of this point.
+            .col-md-4
+              input#coords-point-field.form-control(ng-model="qry.lat" type='text', name='coords-point-field', placeholder='Latitude')
+          .form-group
+            label.col-md-3.control-label(for='category-select-field') Category
+            .col-md-4
+              select#category-select-field.form-control(ng-model="qry.category" type='text', name='category-select-field')
+                option(value="atm") ATM
+                option(value="bank") Bank
+                option(value="gas_station") Fuel Station
+                option(value="default") Others
+          .form-group.form-actions
+            .col-md-9.col-md-offset-3
+              button.btn.btn-sm.btn-primary(type='submit')
+                i.fa.fa-search
+                |  Search
+              button.btn.btn-sm.btn-primary.btn-alt(type='button')
+                i.fa.fa-user
+                |  Assign locations.

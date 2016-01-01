@@ -1,0 +1,100 @@
+// Page content
+#page-content.page-content
+  // Contacts Header
+  .content-header
+    .header-section
+      h1
+        i.gi.gi-stats
+        | Questions
+
+
+  // END Contacts Header
+  // Main Row
+  .row
+    .col-md-4
+      div.block-section
+        h4.sub-header Manage Questions
+        form.form-bordered.form-horizontal()
+          .form-group
+            label.col-md-8
+              p.form-control-static
+                  | Filter for questions you want to perform operations on.
+                  | eg. Filter to group, to delete or change assignee
+          .form-group
+            .col-md-7
+              input.form-control(type='search', placeholder='Filter questions', ng-model="qtnf")
+            label.col-md-5
+              .btn-group.dropup.text-left
+                a.btn.btn-alt.btn-success.dropdown-toggle(href='javascript:void(0)', data-toggle='dropdown')
+                  i.fa.fa-users
+                  span.caret
+                ul.dropdown-menu.dropdown-custom
+                  li.dropdown-header Grouping
+                  li.divider
+                  li
+                    a(href='javascript:void(0)')
+                      i.fa.fa-check-square.pull-right(style="color: green")
+                      | Group A
+                    a(href='javascript:void(0)')
+                      | Group B
+                    a(href='javascript:void(0)')
+                      | Group C
+                  li.divider
+                  li
+                    a(href='javascript:void(0)')
+                      | None
+
+
+      div.list-group
+        a.list-group-item(ng-repeat="d in __data | filter:qtnf")
+          span.badge 1
+          h4.list-group-item-heading {{::d.title}}
+          p.list-group-item-text
+            i.fa.fa-user   {{::d.assignee}}
+            i.fa.fa-user   {{::d.group}}
+            i.fa.fa-user   {{::d.preferred}}
+
+
+    .col-md-8
+      .block
+        // Normal Form Title
+        .block-title
+          .block-options.pull-right
+            a.btn.btn-alt.btn-sm.btn-default.toggle-bordered.enable-tooltip(href='javascript:void(0)', data-toggle='button', title='', data-original-title='Toggles .form-bordered class')
+          h2
+            |  Add a new
+            strong  Question
+        // END Normal Form Title
+        // Normal Form Content
+        .row
+          .col-md-8
+            form.form-bordered.form-horizontal(ng-submit="save_question(form)")
+              .form-group
+                label.col-md-3 Question
+                .col-md-9
+                  textarea.form-control(type='password', placeholder='Start here.', ng-model="form.questions")
+                  span.help-block
+                    | write each question you want to ask out, ending
+                    | in a question mark (?). <em style="color: darkorange">One question per line</em>
+              .form-group
+                  label.col-md-3 Assignee Email
+                  .col-md-9
+                    input#example-nf-email.form-control(type='email', placeholder='Enter Email Account', ng-model="form.email_assignee")
+                    span.help-block Please enter the <abbr>assignee</abbr> ESP email.
+              .form-group
+                label.col-md-3 Preffered response
+                .col-md-4
+                  select.form-control(ng-model="form.response_type")
+                    option Any
+                    option Yes or No
+                    option Comment
+                    option Picture
+                    option Video
+                  span.help-block What is the most suitable kind of response to your question.
+              .form-group.form-actions
+                button.btn.btn-sm.btn-primary(type='submit')
+                  i.fa.fa-user
+                  |  Add
+                button.btn.btn-sm.btn-warning(type='reset')
+                  i.fa.fa-repeat
+                  |  Reset

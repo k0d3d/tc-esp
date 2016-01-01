@@ -19,7 +19,11 @@
       // Sidebar Navigation
       ul.sidebar-nav
         li
-          a(ui-sref='activities')
+          a(ui-sref='statistics')
+            i.gi.gi-edit.sidebar-nav-icon
+            | Dashboard
+        li
+          a(ui-sref='questions')
             i.gi.gi-edit.sidebar-nav-icon
             | Manage Questions
         li
@@ -27,9 +31,13 @@
             i.gi.gi-stats.sidebar-nav-icon
             | Activity
         li
-          a(ui-sref="locations")
+          a(ui-sref="locations({'entry_type': 'system'})")
             i.gi.gi-building.sidebar-nav-icon
-            | Locations
+            | Stored Locations
+        li
+          a(ui-sref="locations({'entry_type': 'user'})")
+            i.gi.gi-building.sidebar-nav-icon
+            | User Locations
         li
           a(href="", ng-click="do_logout()")
             i.gi.gi-exit.sidebar-nav-icon
