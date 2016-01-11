@@ -90,7 +90,7 @@ module.exports.routes = function (app) {
     var dev = new TCLocations(), task;
     switch (req.query.action) {
       case 'CHECKIN':
-      task = dev.checkIntoLocation(req.body.deviceId, req.params.locationId, req.user._id);
+      task = dev.checkIntoLocation(req.body.deviceId, req.params.locationId, req.user);
       break;
       case 'UPDATECHECKIN':
       task = dev.updateCheckInRecord(req.body, req.params.locationId, req.user._id);

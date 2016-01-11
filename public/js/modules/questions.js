@@ -38,6 +38,7 @@ qtnApp.controller('QtnController', [
     q.questions = line_of;
     q.response_type = form.response_type;
     q.email_assignee = form.email_assignee;
+    q.promptAfter = form.promptAfter;
     q.$save();
 
   };

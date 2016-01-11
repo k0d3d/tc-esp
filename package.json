@@ -39,7 +39,7 @@
     "easyimage": "~0.1.4",
     "errors": "~0.1.0",
     "excel-export": "^0.4.1",
-    "express": "latest",
+    "express": "^4.13.3",
     "express-jwt": "~0.3.1",
     "express-session": "^1.11.1",
     "express-useragent": "^0.1.2",
