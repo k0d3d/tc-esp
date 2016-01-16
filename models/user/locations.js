@@ -67,9 +67,23 @@ var PointsSchema = new Schema ({
 
 
 var FeedBackAnswers = new Schema ({
-  checkInId: {type: Schema.ObjectId},
-  nextQuestion: {type: Number},
-  questions: [Schema.Types.Mixed]
+
+  addedOn: {type: Date},
+  answer: {type: String},
+  assignee:{type: String},
+  checkInId: {type: String},
+  dateTriggered: {type: String},
+  decision: {type: String},
+  hasComment: {type: String, default: 'None'},
+  hasImage: {type: String, default: 'feedback-sample.jpg'},
+  hasVideo: {type: String},
+  listIndex: {type: Number},
+  locationId: {type: String},
+  locationName: {type: String},
+  questions: {type: String},
+  timeUpdated: {type: Date},
+  title: {type: String},
+  clientPrimaryId: {type: String}
 });
 
 module.exports = {

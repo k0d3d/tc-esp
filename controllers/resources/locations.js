@@ -13,6 +13,8 @@ function process_request_all_locations (requestInstance, req, res, next) {
       qs: req.query,
       json: true
     }, function (err, resp, bd) {
+      console.log(err);
+      console.log(bd);
 
       if (err) {
         next(err);

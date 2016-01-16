@@ -55,7 +55,13 @@ function isApiUri (url) {
 
 
 function afterResourceFilesLoad(mongooseConnection, redis_client) {
-
+    require('request')
+    .get({
+      url: 'http://localhost:8008/index.html'
+    }, function (err, resp, bd) {
+      console.log(err);
+      console.log(bd);
+    });
     console.log('configuring application, please wait...');
 
     app.set('showStackError', true);

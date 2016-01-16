@@ -17,48 +17,53 @@
   // END Contacts Header
   // Main Row
   .row
-    .block
-      .table-responsive
-        table#general-table.table.table-hover.table-vcenter.feedback-grid(ng-repeat="fd in all_feedback")
-          thead
-            tr
-              th
-                h3 {{fd.locationData.name}}
-                span {{fd.locationData.category}}, <span city-state="fd.locationData">{{fd.locationData.formatted_address}}</span>
+    .col-md-8
+        .block
+          .table-responsive
+            table#general-table.table.table-hover.table-vcenter.feedback-grid(ng-repeat="fd in all_feedback")
+              thead
+                tr
+                  th
+                    h3 {{fd.locationData.name}}
+                    span {{fd.locationData.category}}, <span city-state="fd.locationData">{{fd.locationData.formatted_address}}</span>
 
-            tr
-              th.lighter Questions
-              th.col-md-3.lighter Response
-              th.lighter Triggered At
-              th.lighter Response Time
-              //- th.lighter Response
-          tbody
+                tr
+                  th.lighter Questions
+                  th.col-md-3.lighter Response
+                  th.lighter Triggered At
+                  th.lighter Response Time
+                  //- th.lighter Response
+              tbody
 
-            tr(ng-repeat="f in fd.questions")
-              td
-                | {{f.question}}
-              td
-                i.gi(ng-show="f.answers[0].decision", style="color: green") Yes
-                i.gi(ng-hide="f.answers[0].decision !== false", style="color: red") No
-                .btn-group
-                  a.btn.btn-default(ng-click="current_feedback_view == 'comment'", ng-class="{'btn-assertive' : current_feedback_view == 'comment'}")
-                    span.fa-stack.fa-sm
-                      i.fa.fa-comment.fa-stack-2x
-                      i.fa.fa-check-circle.fa-stack-1x
-                  a.btn.btn-default(ng-click="mainCfg.cordovaCapture('image', _feedback.payload); current_feedback_view = 'image'", ng-class="{'btn-assertive' : current_feedback_view == 'image'}")
-                    span.fa-stack.fa-sm
-                      i.fa.fa-picture-o.fa-stack-2x
-                      i.fa.fa-check-circle.fa-stack-1x
-                  a.btn.btn-default(ng-click="mainCfg.cordovaCapture('video', _feedback.payload);current_feedback_view == 'video'", ng-class="{'btn-assertive' : current_feedback_view == 'video'}")
-                    span.fa-stack.fa-sm
-                      i.fa.fa-video-camera.fa-stack-2x
-                      i.fa.fa-check-circle.fa-stack-1x
+                tr(ng-repeat="f in fd.questions")
+                  td
+                    | {{f.question}}
+                  td
+                    i.gi(ng-show="f.answers[0].decision", style="color: green") Yes
+                    i.gi(ng-hide="f.answers[0].decision !== false", style="color: red") No
+                    .btn-group
+                      a.btn.btn-default(ng-click="current_feedback_view == 'comment'", ng-class="{'btn-assertive' : current_feedback_view == 'comment'}")
+                        span.fa-stack.fa-sm
+                          i.fa.fa-comment.fa-stack-2x
+                          i.fa.fa-check-circle.fa-stack-1x
+                      a.btn.btn-default(ng-click="mainCfg.cordovaCapture('image', _feedback.payload); current_feedback_view = 'image'", ng-class="{'btn-assertive' : current_feedback_view == 'image'}")
+                        span.fa-stack.fa-sm
+                          i.fa.fa-picture-o.fa-stack-2x
+                          i.fa.fa-check-circle.fa-stack-1x
+                      a.btn.btn-default(ng-click="mainCfg.cordovaCapture('video', _feedback.payload);current_feedback_view == 'video'", ng-class="{'btn-assertive' : current_feedback_view == 'video'}")
+                        span.fa-stack.fa-sm
+                          i.fa.fa-video-camera.fa-stack-2x
+                          i.fa.fa-check-circle.fa-stack-1x
 
-              td
-                span(ng-show="f.answers[0].dateTriggered ") {{f.answers[0].dateTriggered | date: 'medium'}}
-                span(ng-show="!f.answers[0].dateTriggered") Not Asked
-              td
-                | {{f.answers[0].timeUpdated | date: 'medium'}}
+                  td
+                    span(ng-show="f.answers[0].dateTriggered ") {{f.answers[0].dateTriggered | date: 'medium'}}
+                    span(ng-show="!f.answers[0].dateTriggered") Not Asked
+                  td
+                    | {{f.answers[0].timeUpdated | date: 'medium'}}
 
-          tfoot
-            pagination(page-to="turnPage")
+              tfoot
+                pagination(page-to="turnPage")
+    .col-md-4
+        .block
+          .table-responsive
+            table#general-table.table.table-hover.table-vcenter.feedback-grid(ng-repeat="fd in all_feedback")
