@@ -24,8 +24,35 @@ qtnApp.controller('QtnController', [
   '$scope',
   'questions_overview',
   'QtnService',
-  function ($scope, questions_overview, QtnService) {
+  'WardenService',
+  function (
+    $scope,
+    questions_overview,
+    QtnService,
+    Warden
+  ) {
   $scope.__data = questions_overview;
+
+  $scope.modify_assignments =  function (locationList, qry, group) {
+    if (qry.assign_to_group) {
+      Warden.bulkAssignToQGroup(locationList, group)
+      .then(function () {
+        alert('Changes have been made to location group property')
+      }, function (err) {
+        alert('An error occured while making changes,')
+      })
+
+    }
+    if (qry.assign_to_user) {
+      Warden.bulkAssignToUser(locationList, group)
+      .then(function () {
+        alert('Changes have been made to Location access.')
+      }, function (err) {
+        alert('An error occured while making changes,')
+      })
+
+    }
+  }
 
   $scope.save_question = function save_question (form) {
     var line_of = [];

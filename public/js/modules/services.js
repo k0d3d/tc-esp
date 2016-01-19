@@ -29,7 +29,24 @@ services.factory('UserService', ['$resource', function ($resource) {
     },
   });
 }]);
+services.factory('WardenService', ['$http', function ($http) {
 
+  return {
+    bulkAssignToUser: function bulkAssignToUser (locationList, assignee) {
+     return $http.put('/resource/warden/assignee', {
+        locationList: locationList,
+        assignee: assignee,
+      });
+    },
+    bulkAssignToQGroup: function bulkAssignToQGroup (locationList, group) {
+     return $http.put('/resource/warden/subjectGroup', {
+        locationList: locationList,
+        subjectGroup: group
+      });
+    }
+  };
+
+}]);
 services.factory('LocationService', ['$resource', function ($resource) {
 
   return $resource('/resource/locations/:locationId', {

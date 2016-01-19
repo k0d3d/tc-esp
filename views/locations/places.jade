@@ -104,7 +104,31 @@
             .col-md-9.col-md-offset-3
               button.btn.btn-sm.btn-primary(type='submit')
                 i.fa.fa-search
-                |  Search
-              button.btn.btn-sm.btn-primary.btn-alt(type='button')
-                i.fa.fa-user
-                |  Assign locations.
+                |  Filter Results
+
+      .block
+        .block-title
+          h2 Assign Locations
+        form.form-horizontal.form-bordered(name='assign-locations', ng-submit="submit_search(qry, true)", ng-init="qry.entry_type= 'user'")
+          .form-group
+            label.col-md-3.control-label(for='location-assign-to') To Account
+            .col-md-9
+              input.form-control(ng-model="qry.assign_to_user" type='text', name='location-assign-to', placeholder='joe_yale@tagchief.com')
+              span.help-block Please type in an account you wish to give access to this location.
+          .form-group
+            label.col-md-3.control-label(for='location-assign-group') To Group
+            .col-md-9
+              select.form-control(ng-model="qry.assign_to_group" type='text', name='location-assign-group')
+                option(value="a")  Group A questions
+                option(value="b")  Group B questions
+                option(value="c")  Group C questions
+                option(value="reset")
+              span.help-block Please enter the question-feedback group you want this location to belong to
+          .form-group.form-actions
+            .col-md-9.col-md-offset-3
+              button.btn.btn-sm.btn-primary(type='button')
+                i.fa.fa-search
+                |  Review
+              button.btn.btn-sm.btn-primary(type='submit')
+                i.fa.fa-search
+                |  Submit Now

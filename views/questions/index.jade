@@ -32,16 +32,16 @@
                   li.dropdown-header Grouping
                   li.divider
                   li
-                    a(href='javascript:void(0)')
+                    a(href='' ng-click="set_group_as('a')")
                       i.fa.fa-check-square.pull-right(style="color: green")
                       | Group A
-                    a(href='javascript:void(0)')
+                    a(href='' ng-click="set_group_as('b')")
                       | Group B
-                    a(href='javascript:void(0)')
+                    a(href='' ng-click="set_group_as('c')")
                       | Group C
                   li.divider
                   li
-                    a(href='javascript:void(0)')
+                    a(href='' ng-click="reset_group()")
                       | None
 
       div.list-group
@@ -50,9 +50,9 @@
             i.fa.fa-circle-o
           h4.list-group-item-heading {{::d.title}}
           p.list-group-item-text
-            i.fa.fa-user   {{::d.assignee}}
-            i.fa.fa-user   {{::d.group}}
-            i.fa.fa-user   {{::d.preferred}}
+            i.fa.fa-circle-o   {{::d.assignee}}
+            i.fa.fa-circle-o   {{::d.group}}
+            i.fa.fa-circle-o   {{::d.preferred}}
 
 
     .col-md-8

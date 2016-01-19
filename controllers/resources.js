@@ -41,6 +41,7 @@ module.exports = function (app, ensureLoggedIn) {
   require('./resources/locations')(resource);
   require('./resources/stats')(resource);
   require('./resources/questions')(resource);
+  require('./resources/warden')(resource);
 
   app.use('/resource', resource);
 

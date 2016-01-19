@@ -36,14 +36,14 @@
               td
                 | Active
               td
-                .btn-group
+                .btn-bar.btn-rounded
                   a.btn.btn-clear.btn-default
-                    i.fa.gi(ng-show="fd.decision == 'Yes", style="color: green") Yes
+                    i.fa.gi(ng-show="fd.decision == 'Yes'", style="color: green") Yes
                     i.fa.gi(ng-show="fd.decision == 'No'", style="color: red") No
 
-                  a.btn.btn-clear.btn-default
+                  a.btn.btn-clear.btn-default(title="{{fd.hasComment}}")
                       i.fa.fa-comment
-                  a.btn.btn-clear.btn-default
+                  a.btn.btn-clear.btn-default(ng-href="http://stark-cliffs-8842.herokuapp.com/location-assets/{{fd.checkInId}}.jpg", target="_blank")
                       i.fa.fa-picture-o
                   a.btn.btn-clear.btn-default
                       i.fa.fa-video-camera
