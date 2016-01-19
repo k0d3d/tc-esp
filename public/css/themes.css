@@ -275,3 +275,9 @@ THEME FIRE
 .themed-background-dark-fire {
     background-color: #4a2e2b !important;
 }
+
+.btn-bar.btn-rounded .btn {
+    border-radius: 50%;
+    height: 41px;
+    width: 41px;
+}

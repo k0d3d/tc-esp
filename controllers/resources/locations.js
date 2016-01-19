@@ -13,8 +13,6 @@ function process_request_all_locations (requestInstance, req, res, next) {
       qs: req.query,
       json: true
     }, function (err, resp, bd) {
-      console.log(err);
-      console.log(bd);
 
       if (err) {
         next(err);
@@ -46,7 +44,9 @@ function process_request_attach_locations_to_user (requestInstance, req, res, ne
 
 module.exports = function (resource) {
   // var users = new User();
+  resource.route('*', function (req, res, next) {
 
+  });
   resource.route('/locations')
   .get(function (req, res, next) {
     var all_locations_request = request.defaults({
@@ -56,7 +56,14 @@ module.exports = function (resource) {
       baseUrl: config.tagChiefOAuth.server
     });
 
-    req.query.entry_type = req.query.entry_type || 'system';
+    req.query.entry_type = 'user';
+
+    // if its admin, we can choose.
+    if (req.user.email === 'admin@tagchief.com') {
+      req.user.isAdmin = true;
+      req.query.entry_type = req.query.entry_type || 'system';
+    }
+
 
     if (req.query.listType === 'search' || req.query.listType === 'list_all_locations'){
       return process_request_all_locations(all_locations_request, req, res, next);

@@ -15,7 +15,21 @@ locations.controller('ActivitiesController', ['$scope', 'FeedbackService', funct
     alert('An error occured when executing this operation. Admin has been notified');
   });
 }]);
-locations.controller('LocationController', ['$scope', 'LocationService', '$stateParams', '$state', function ($scope, LocationService, $stateParams, $state) {
+locations.controller('LocationController', [
+  '$scope',
+  'LocationService',
+  '$stateParams',
+  '$state',
+  'WardenService',
+  '$q',
+  function (
+    $scope,
+    LocationService,
+    $stateParams,
+    $state,
+    warden,
+    Q
+    ) {
   $scope._viewOptions = {
     page: 0,
     rpp: 10,
@@ -94,18 +108,36 @@ locations.controller('LocationController', ['$scope', 'LocationService', '$state
       });
 
     } else {
-
-      LocationService.query(angular.extend({}, qry, {
-        listType: 'attach_locations_to_user',
-        page: 0,
-        rpp: 20,
-        entry_type: qry.entry_type
-
-      }))
-      .$promise
-      .then(function (response) {
-        $scope.places_list = response;
+      var k = {};
+      var placed_id = _.map($scope.places_list, function (m) {
+        return {
+          locationId: m._id,
+          author: m.author,
+          action: (m.authority && m.authority.length) ? 'modify-authority' : 'add-authority'
+        };
       });
+      if (qry.assign_to_user) {
+
+        k.bulkAssignToUser = warden.bulkAssignToUser(placed_id, qry.assign_to_user);
+      }
+      // if (qry.assign_to_group) {
+      //   k.bulkAssignToQGroup = warden.bulkAssignToQGroup(placed_id, qry.assign_to_group);
+      // }
+      Q.all(k)
+      .then(function (all) {
+        console.log(all);
+      });
+      // LocationService.query(angular.extend({}, qry, {
+      //   listType: 'assign_locations_to_user',
+      //   page: 0,
+      //   rpp: 20,
+      //   entry_type: qry.entry_type
+
+      // }))
+      // .$promise
+      // .then(function (response) {
+      //   $scope.places_list = response;
+      // });
     }
 
   };

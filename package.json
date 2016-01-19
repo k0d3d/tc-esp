@@ -22,7 +22,7 @@
   "dependencies": {
     "async": "latest",
     "aws-sdk": "^2.1.25",
-    "bcrypt": "^0.8.2",
+    "bcryptjs": "^0.8.2",
     "body-parser": "^1.0.1",
     "colors": "~0.6.2",
     "common-errors": "latest",

@@ -64,6 +64,10 @@
                 "multi": "/api/v2/questions/multi",
                 "group" : "/api/v2/questions/group",
                 "assign" : "/api/v2/questions/assign"
+            },
+            "warden": {
+                "add_assigment": "/api/v2/warden",
+                "modify_group" : "/api/v2/warden"
             }
         }
     }
