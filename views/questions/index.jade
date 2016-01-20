@@ -11,7 +11,7 @@
   // END Contacts Header
   // Main Row
   .row
-    .col-md-4
+    .col-md-7
       div.block-section
         h4.sub-header Manage Questions
         form.form-bordered.form-horizontal()
@@ -49,13 +49,12 @@
           span.badge
             i.fa.fa-circle-o
           h4.list-group-item-heading {{::d.title}}
-          p.list-group-item-text
-            i.fa.fa-circle-o   {{::d.assignee}}
-            i.fa.fa-circle-o   {{::d.group}}
-            i.fa.fa-circle-o   {{::d.preferred}}
+          //- p.list-group-item-text
+          //-   i.fa.fa-circle-o   {{::d.assignee}}
+          //-   i.fa.fa-circle-o   {{::d.currentGroup}}
 
 
-    .col-md-8
+    .col-md-5
       .block
         // Normal Form Title
         .block-title
@@ -83,7 +82,7 @@
                     span.help-block Please enter the <abbr>assignee</abbr> ESP email.
               .form-group
                 label.col-md-3 Preffered response
-                .col-md-3
+                .col-md-9
                   select.form-control(ng-model="form.response_type")
                     option Any
                     option Yes or No
@@ -96,9 +95,9 @@
                 .col-md-5
                   select.form-control(ng-model="form.promptAfter")
                     option(value="0") Immediate
-                    option(value="{{30 * 60}}") Every 30 minutes
-                    option(value="{{45 * 60}}") Every 45 minutes
-                    option(value="{{60 * 60}}") Every 1 hour
+                    option(value="{{1 * 60}}") One minute
+                    option(value="{{5 * 60}}") 5 minutes
+                    option(value="{{10 * 60}}") 10 minutes
               .form-group.form-actions
                 button.btn.btn-sm.btn-primary(type='submit')
                   i.fa.fa-user

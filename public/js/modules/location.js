@@ -14,7 +14,29 @@ locations.controller('ActivitiesController', ['$scope', 'FeedbackService', funct
   }, function (err) {
     alert('An error occured when executing this operation. Admin has been notified');
   });
-}]);
+
+
+}])
+.filter('shortenId', function () {
+  return function (id) {
+    if (id && id.length) {
+
+      return id.substring(4, -1);
+    } else {
+      return '';
+    }
+  }
+})
+.filter('moment', function(){
+  return function(time){
+    if (time == 'Infinity') {
+      return '--';
+    } else {
+      var m = moment(time);
+      return m.fromNow();
+    }
+  };
+});
 locations.controller('LocationController', [
   '$scope',
   'LocationService',
@@ -73,7 +95,7 @@ locations.controller('LocationController', [
     //and a hash specifying the operator to use
     //and the string or needle to be matched or
     //found.
-    qry.search_query = [],
+    qry.search_query = [];
     qry.conditions = {};
     //set the author search definition
     if (qry.author) {
@@ -127,17 +149,7 @@ locations.controller('LocationController', [
       .then(function (all) {
         console.log(all);
       });
-      // LocationService.query(angular.extend({}, qry, {
-      //   listType: 'assign_locations_to_user',
-      //   page: 0,
-      //   rpp: 20,
-      //   entry_type: qry.entry_type
 
-      // }))
-      // .$promise
-      // .then(function (response) {
-      //   $scope.places_list = response;
-      // });
     }
 
   };

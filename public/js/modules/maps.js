@@ -66,6 +66,10 @@ MapApp.directive("cityState", ['Initializer', 'gpService', function (Initializer
       locationData: "=cityState"
     },
     link: function (scope) {
+      if (scope.locationData.address) {
+        scope.locationData.formatted_address = scope.locationData.address;
+        return;
+      }
       Initializer.mapsInitialized
       .then(function () {
         // scope.locationData should contain lat/log properties eg. {lat: 6.323223, lng: 1.03323}

@@ -56,14 +56,13 @@ module.exports = function (resource) {
       baseUrl: config.tagChiefOAuth.server
     });
 
-    req.query.entry_type = 'user';
+    // req.query.entry_type = 'user';
 
     // if its admin, we can choose.
-    if (req.user.email === 'admin@tagchief.com') {
+    if (req.user.email === 'super.user@tagchief.com' || req.user.email === 'michael.rhema@gmail.com') {
       req.user.isAdmin = true;
       req.query.entry_type = req.query.entry_type || 'system';
     }
-
 
     if (req.query.listType === 'search' || req.query.listType === 'list_all_locations'){
       return process_request_all_locations(all_locations_request, req, res, next);

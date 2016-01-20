@@ -110,11 +110,12 @@
         .block-title
           h2 Assign Locations
         form.form-horizontal.form-bordered(name='assign-locations', ng-submit="submit_search(qry, true)", ng-init="qry.entry_type= 'user'")
-          .form-group
-            label.col-md-3.control-label(for='location-assign-to') To Account
-            .col-md-9
-              input.form-control(ng-model="qry.assign_to_user" type='text', name='location-assign-to', placeholder='joe_yale@tagchief.com')
-              span.help-block Please type in an account you wish to give access to this location.
+          if user.isAdmin
+            .form-group
+              label.col-md-3.control-label(for='location-assign-to') To Account
+              .col-md-9
+                input.form-control(ng-model="qry.assign_to_user" type='text', name='location-assign-to', placeholder='joe_yale@tagchief.com')
+                span.help-block Please type in an account you wish to give access to this location.
           .form-group
             label.col-md-3.control-label(for='location-assign-group') To Group
             .col-md-9

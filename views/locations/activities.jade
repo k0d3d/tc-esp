@@ -19,20 +19,19 @@
   .row
     .block
       .table-responsive
-        table#general-table.table.table-hover.table-vcenter.feedback-grid(ng-repeat="fd in all_feedback")
+        table#general-table.table.table-hover.table-vcenter.feedback-grid()
           thead
             tr
-              th.lighter Activity
-              th.col-md-3.lighter Status
-              th.lighter Feedback Assets
-              th.lighter Delay
+              th.col-md-4.lighter Activity
+              th Status
+              th Feedback Assets
+              th.lighter Response Time
               //- th.lighter Response
           tbody
-
-            tr
+            tr(ng-repeat="fd in all_feedback")
               td
-                p(style="margin-bottom: 0;") <strong>CheckIn</strong>
-                span at {{fd.locationId.name}}, <span>{{fd.locationId.address}}</span>
+                p(style="margin-bottom: 0;") <strong>CheckIn</strong> - {{fd.checkInId._id | shortenId}}
+                span at {{fd.locationId.name}}, <span>{{fd.locationId.address}}</span> <span style="color:#1bbae1">{{fd.checkInId.checkInTime | moment}}</span>
               td
                 | Active
               td
@@ -43,12 +42,12 @@
 
                   a.btn.btn-clear.btn-default(title="{{fd.hasComment}}")
                       i.fa.fa-comment
-                  a.btn.btn-clear.btn-default(ng-href="http://stark-cliffs-8842.herokuapp.com/location-assets/{{fd.checkInId}}.jpg", target="_blank")
+                  a.btn.btn-clear.btn-default(ng-href="http://stark-cliffs-8842.herokuapp.com/location-assets/{{fd.clientPrimaryId}}.jpg", target="_blank")
                       i.fa.fa-picture-o
                   a.btn.btn-clear.btn-default
                       i.fa.fa-video-camera
               td
-                | {{f.answers[0].timeUpdated | date: 'medium'}}
+                span(response-time="fd") {{fd.responseTime}}
 
           tfoot
             pagination.pull-right(page-to="turnPage")
