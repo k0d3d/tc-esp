@@ -30,24 +30,23 @@
           tbody
             tr(ng-repeat="fd in all_feedback")
               td
-                p(style="margin-bottom: 0;") <strong>CheckIn</strong> - {{fd.checkInId._id | shortenId}}
-                span at {{fd.locationId.name}}, <span>{{fd.locationId.address}}</span> <span style="color:#1bbae1">{{fd.checkInId.checkInTime | moment}}</span>
+                p(style="margin-bottom: 0;") <strong>{{fd.questions}}</strong>
+                span CheckIn - {{fd.checkInId._id | shortenId}} at {{fd.locationId.name}}, <span>{{fd.locationId.address}}</span> <span style="color:#1bbae1">{{fd.checkInId.checkInTime | moment}}</span>
               td
                 | Active
               td
-                .btn-bar.btn-rounded
-                  a.btn.btn-clear.btn-default
-                    i.fa.gi(ng-show="fd.decision == 'Yes'", style="color: green") Yes
-                    i.fa.gi(ng-show="fd.decision == 'No'", style="color: red") No
+                  a.btn.btn-alt.btn-link
+                    i.fa.fa-thumbs-up(ng-show="fd.decision == 'Yes'", style="color: green") Yes
+                    i.fa.fa-thumbs-down(ng-show="fd.decision == 'No'", style="color: red") No
 
-                  a.btn.btn-clear.btn-default(title="{{fd.hasComment}}")
+                  a.btn.btn-alt.btn-link(title="{{fd.hasComment}}")
                       i.fa.fa-comment
-                  a.btn.btn-clear.btn-default(ng-href="http://stark-cliffs-8842.herokuapp.com/location-assets/{{fd.clientPrimaryId}}.jpg", target="_blank")
+                  a.btn.btn-alt.btn-link(ng-href="http://stark-cliffs-8842.herokuapp.com/api/v2/locations/{{fd.locationId._id}}/assets/{{fd.hasImage}}", target="_blank")
                       i.fa.fa-picture-o
-                  a.btn.btn-clear.btn-default
+                  a.btn.btn-alt.btn-link
                       i.fa.fa-video-camera
               td
-                span(response-time="fd") {{fd.responseTime}}
+                span(response-time="fd") {{fd.timeUpdated | moment}}
 
           tfoot
             pagination.pull-right(page-to="turnPage")

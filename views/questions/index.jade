@@ -84,17 +84,17 @@
                 label.col-md-3 Preffered response
                 .col-md-9
                   select.form-control(ng-model="form.response_type")
-                    option Any
-                    option Yes or No
-                    option Comment
-                    option Picture
-                    option Video
+                    option(value="any") Any
+                    option(value="yesno") Yes or No
+                    option(value="comment") Comment
+                    option(value="image") Picture
+                    option(value="video") Video
                   span.help-block What is the most suitable kind of response to your question.
                .form-group
                 label.col-md-3 Timing
                 .col-md-5
                   select.form-control(ng-model="form.promptAfter")
-                    option(value="0") Immediate
+                    option(value="10") Immediate
                     option(value="{{1 * 60}}") One minute
                     option(value="{{5 * 60}}") 5 minutes
                     option(value="{{10 * 60}}") 10 minutes

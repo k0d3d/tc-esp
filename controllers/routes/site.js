@@ -9,8 +9,8 @@ module.exports = function (app, ensureLoggedIn) {  // home route
     // if its admin, we can choose.
     if (req.user && (req.user.userEmail === 'super.user@tagchief.com' || req.user.userEmail === 'michael.rhema@gmail.com')) {
       req.user.isAdmin = true;
-      res.locals.user = req.user;
     }
+    res.locals.user = req.user;
     next();
   });
   app.get('/', ensureLoggedIn('/login'), function(req, res){
