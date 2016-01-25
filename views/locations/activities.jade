@@ -29,7 +29,7 @@
               th.lighter Response Time
               //- th.lighter Response
           tbody
-            tr(ng-repeat="fd in all_feedback | orderBy: '-addedOn'")
+            tr(ng-repeat="fd in all_feedback | orderBy: '-dateTriggered'")
               td
                 p(style="margin-bottom: 0;") <strong>{{fd.questions}}</strong>
                 span Feedback - {{fd.checkInId._id | shortenId}} at {{fd.locationId.name}}, <span>{{fd.locationId.address}}</span> <span style="color:#1bbae1">{{fd.checkInId.checkInTime | moment}}</span>
@@ -40,21 +40,29 @@
                     i.fa.fa-thumbs-up(ng-show="fd.decision == 'Yes'", style="color: green") Yes
                     i.fa.fa-thumbs-down(ng-show="fd.decision == 'No'", style="color: red") No
               td
-                  a.btn.btn-alt.btn-link.dropdown-toggle( data-toggle="dropdown")
-                      i.fa.fa-comment
-                  ul.dropdown-menu.dropdown-custom
-                    li
-                      p.well
-                        | {{fd.hasComment}}
-                  a.btn.btn-alt.btn-link.dropdown-toggle( data-toggle="dropdown")
-                      i.fa.fa-picture-o
-                  ul.dropdown-menu.dropdown-custom
-                    li
-                      p
-                        a.btn.btn-alt.btn-link(ng-href="http://stark-cliffs-8842.herokuapp.com/assets/{{fd.locationId._id}}{{fd.hasImage}}", target="_blank")
-                          img.img-thumbnail(ng-src="http://stark-cliffs-8842.herokuapp.com/assets/{{fd.locationId._id}}{{fd.hasImage}}")
-                  a.btn.btn-alt.btn-link
-                      i.fa.fa-video-camera
+                .btn-toolbar
+                  .btn-group
+                    div.dropdown
+                      a.btn.btn-alt.btn-link.dropdown-toggle( data-toggle="dropdown")
+                          i.fa.fa-comment
+                      ul.dropdown-menu.dropdown-custom
+                        li
+                          p.well
+                            | {{fd.hasComment}}
+                  .btn-group
+                    div.dropdown
+                      a.btn.btn-alt.btn-link.dropdown-toggle( data-toggle="dropdown", ng-click="imageSrc= CDN_URL + '/' +fd.hasImage")
+                          i.fa.fa-picture-o
+                      ul.dropdown-menu.dropdown-custom
+                        li
+                          p
+                            a.btn.btn-alt.btn-link(ng-href="{{CDN_URL}}/{{fd.hasImage}}", target="_blank")
+                              img.img-thumbnail(ng-src="{{imageSrc}}", style="width: 300px")
+                  .btn-group
+                    div.dropdown
+                      a.btn.btn-alt.btn-link
+                          i.fa.fa-video-camera
+
               td
                 span(response-time="fd") {{fd.timeUpdated | moment}}
 

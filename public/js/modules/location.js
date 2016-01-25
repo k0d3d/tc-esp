@@ -1,11 +1,16 @@
 var locations = angular.module('locations', []);
 
-locations.controller('ActivitiesController', ['$scope', 'FeedbackService', function ($scope, FeedbackService) {
+locations.controller('ActivitiesController', [
+  '$scope',
+  'FeedbackService',
+  'api_config',
+  function ($scope, FeedbackService, api_config) {
   $scope._viewOptions = {
     page: 0,
     rpp: 10,
     listType: 'feedbacks',
   };
+  $scope.CDN_URL = api_config.CDN_URL;
   // return;
   FeedbackService.query($scope._viewOptions)
   .$promise
@@ -55,8 +60,8 @@ locations.controller('LocationController', [
   $scope._viewOptions = {
     page: 0,
     rpp: 10,
-    listType: 'list_all_locations',
-    entry_type: $stateParams.entry_type
+    listType: 'list_all_locations'
+    // entry_type: $stateParams.entry_type
   };
 
 
@@ -67,7 +72,7 @@ locations.controller('LocationController', [
   LocationService.query(opt)
   .$promise
   .then(function (response) {
-    $scope.qry = _.omit($stateParams, ['rpp', 'listType', 'page', 'entry_type'])
+    $scope.qry = _.omit($stateParams, ['rpp', 'listType', 'page', 'entry_type']);
     $scope.places_list =  response;
   });
 
@@ -75,7 +80,7 @@ locations.controller('LocationController', [
 
     var opt = angular.extend({}, $scope._viewOptions, qry.options, $stateParams);
     $state.transitionTo($state.current, opt, {
-      reload: true, inherit: false, notify: true
+      reload: true, inherit: true, notify: true
     });
     qry.callback();
     // LocationService.query(angular.extend({}, $scope._viewOptions, qry.options, $stateParams))
@@ -120,13 +125,13 @@ locations.controller('LocationController', [
       // latitude: 6.5441483
       // longitude: 3.360115
 
-      qry['conditions.max_distance'] = 1;
+      qry['conditions.max_distance'] = 5;
     }
 
     if (!tag) {
 
-      $state.transitionTo($state.current, qry, {
-        reload: true, inherit: false, notify: true
+      $state.transitionTo($state.current, angular.extend({}, $stateParams, qry), {
+        reload: true, inherit: true, notify: true
       });
 
     } else {
