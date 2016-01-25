@@ -5,6 +5,7 @@ var
     util = require('util');
 
 var add_set_request = function (request, accessToken, config) {
+  console.log(accessToken);
   return request.defaults({
       headers: {
         'Authorization' : 'Bearer ' + accessToken
@@ -52,6 +53,23 @@ module.exports = function (resource) {
       url: config.tagChiefOAuth.endpoints.questions.add,
       body: req.body,
       json: true
+    }, function (err, resp, bd) {
+      if (err) {
+        next(err);
+      }
+      if (resp && resp.statusCode < 400) {
+        res.json(bd);
+      } else {
+        // res.status(resp.statusCode).end();
+        next(new Error('Unavailable'));
+      }
+    });
+  });
+  // Adds a new question
+  resource.delete('/questions/:qid', function (req, res, next) {
+    add_set_request(request, req.user.accessToken, config)
+    .del({
+      url: util.format(config.tagChiefOAuth.endpoints.questions.delete, req.params.qid)
     }, function (err, resp, bd) {
       if (err) {
         next(err);

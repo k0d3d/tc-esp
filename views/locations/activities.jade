@@ -24,25 +24,35 @@
             tr
               th.col-md-4.lighter Activity
               th Status
+              th Response
               th Feedback Assets
               th.lighter Response Time
               //- th.lighter Response
           tbody
-            tr(ng-repeat="fd in all_feedback")
+            tr(ng-repeat="fd in all_feedback | orderBy: '-addedOn'")
               td
                 p(style="margin-bottom: 0;") <strong>{{fd.questions}}</strong>
-                span CheckIn - {{fd.checkInId._id | shortenId}} at {{fd.locationId.name}}, <span>{{fd.locationId.address}}</span> <span style="color:#1bbae1">{{fd.checkInId.checkInTime | moment}}</span>
+                span Feedback - {{fd.checkInId._id | shortenId}} at {{fd.locationId.name}}, <span>{{fd.locationId.address}}</span> <span style="color:#1bbae1">{{fd.checkInId.checkInTime | moment}}</span>
               td
                 | Active
               td
                   a.btn.btn-alt.btn-link
                     i.fa.fa-thumbs-up(ng-show="fd.decision == 'Yes'", style="color: green") Yes
                     i.fa.fa-thumbs-down(ng-show="fd.decision == 'No'", style="color: red") No
-
-                  a.btn.btn-alt.btn-link(title="{{fd.hasComment}}")
+              td
+                  a.btn.btn-alt.btn-link.dropdown-toggle( data-toggle="dropdown")
                       i.fa.fa-comment
-                  a.btn.btn-alt.btn-link(ng-href="http://stark-cliffs-8842.herokuapp.com/api/v2/locations/{{fd.locationId._id}}/assets/{{fd.hasImage}}", target="_blank")
+                  ul.dropdown-menu.dropdown-custom
+                    li
+                      p.well
+                        | {{fd.hasComment}}
+                  a.btn.btn-alt.btn-link.dropdown-toggle( data-toggle="dropdown")
                       i.fa.fa-picture-o
+                  ul.dropdown-menu.dropdown-custom
+                    li
+                      p
+                        a.btn.btn-alt.btn-link(ng-href="http://stark-cliffs-8842.herokuapp.com/assets/{{fd.locationId._id}}{{fd.hasImage}}", target="_blank")
+                          img.img-thumbnail(ng-src="http://stark-cliffs-8842.herokuapp.com/assets/{{fd.locationId._id}}{{fd.hasImage}}")
                   a.btn.btn-alt.btn-link
                       i.fa.fa-video-camera
               td

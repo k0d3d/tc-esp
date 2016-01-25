@@ -73,10 +73,7 @@ services.factory('FeedbackService', ['$resource', function ($resource) {
   });
 }]);
 services.factory('QtnService', ['$resource', function ($resource) {
-
-  return $resource('/resource/questions', {
-    listType: '@listType',
-  });
+  return $resource('/resource/questions/:question_id', {'question_id' : '@question_id'});
 }]);
 services.factory('StatsService', ['$resource', function ($resource) {
 

@@ -37,19 +37,21 @@ qtnApp.controller('QtnController', [
     if (qry.assign_to_group) {
       Warden.bulkAssignToQGroup(locationList, group)
       .then(function () {
-        alert('Changes have been made to location group property')
+        alert('Changes have been made to location group property');
       }, function (err) {
-        alert('An error occured while making changes,')
-      })
+        console.log(err);
+        alert('An error occured while making changes,');
+      });
 
     }
     if (qry.assign_to_user) {
       Warden.bulkAssignToUser(locationList, group)
       .then(function () {
-        alert('Changes have been made to Location access.')
+        alert('Changes have been made to Location access.');
       }, function (err) {
-        alert('An error occured while making changes,')
-      })
+        console.log(err);
+        alert('An error occured while making changes,');
+      });
 
     }
   }
@@ -68,6 +70,16 @@ qtnApp.controller('QtnController', [
     q.promptAfter = form.promptAfter;
     q.$save();
 
+  };
+
+  $scope.trash_question = function trash_question (doc) {
+    // var d = QtnService[index];
+    // d.$delete();
+    QtnService.remove({
+      'question_id' : doc._id
+    }, function (e) {
+      console.log(e);
+    });
   };
 
   // console.log(summary_stats);

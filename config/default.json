@@ -59,8 +59,8 @@
             "questions": {
                 "query_all": "/api/v2/questions",
                 "add": "/api/v2/questions",
-                "delete" : "/api/v2/questions/%s/delete",
-                "edit" : "/api/v2/questions/%s/edit",
+                "delete" : "/api/v2/questions/%s",
+                "edit" : "/api/v2/questions/%s",
                 "multi": "/api/v2/questions/multi",
                 "group" : "/api/v2/questions/group",
                 "assign" : "/api/v2/questions/assign"

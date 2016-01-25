@@ -44,10 +44,11 @@
                     a(href='' ng-click="reset_group()")
                       | None
 
-      div.list-group
-        a.list-group-item(ng-repeat="d in __data | filter:qtnf")
-          span.badge
-            i.fa.fa-circle-o
+      ul.list-group
+        li.list-group-item(ng-repeat="d in __data | filter:qtnf")
+          a.btn.btn-link.pull-right(ng-click="trash_question(d, $index)")
+            i.fa.fa-trash
+
           h4.list-group-item-heading {{::d.title}}
           //- p.list-group-item-text
           //-   i.fa.fa-circle-o   {{::d.assignee}}
