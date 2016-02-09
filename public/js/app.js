@@ -113,32 +113,34 @@ app.controller('main', ['$scope', 'requests', function ($scope, requests) {
     requests.logout();
   };
 
-  $scope.offset = 0;
-  $scope.currentPage = 1;
-  $scope.itemsPerPage =5;
+  $scope.pagination_config = {};
 
- $scope.prevPage = function() {
-    if ($scope.currentPage > 0) {
-      $scope.currentPage--;
+  $scope.pagination_config.offset = 0;
+  $scope.pagination_config.currentPage = 1;
+  $scope.pagination_config.itemsPerPage =5;
+
+ $scope.pagination_config.prevPage = function() {
+    if ($scope.pagination_config.currentPage > 0) {
+      $scope.pagination_config.currentPage--;
     }
   };
 
-  $scope.prevPageDisabled = function() {
-    return $scope.currentPage === 0 ? "disabled" : "";
+  $scope.pagination_config.prevPageDisabled = function() {
+    return $scope.currentPage === 0 ? true : false;
   };
 
-  $scope.pageCount = function() {
-    return Math.ceil($scope.items.length/$scope.itemsPerPage)-1;
+  $scope.pagination_config.pageCount = function(items) {
+    return Math.ceil(items.length/$scope.pagination_config.itemsPerPage)-1;
   };
 
-  $scope.nextPage = function() {
-    if ($scope.currentPage < $scope.pageCount()) {
-      $scope.currentPage++;
+  $scope.pagination_config.nextPage = function(items) {
+    if ($scope.pagination_config.currentPage < $scope.pagination_config.pageCount(items)) {
+      $scope.pagination_config.currentPage++;
     }
   };
 
-  $scope.nextPageDisabled = function() {
-    return $scope.currentPage === $scope.pageCount() ? "disabled" : "";
+  $scope.pagination_config.nextPageDisabled = function(items) {
+    // return $scope.pagination_config.currentPage === $scope.pagination_config.pageCount(items) ? true : false;
   };
 
 
@@ -146,9 +148,17 @@ app.controller('main', ['$scope', 'requests', function ($scope, requests) {
 
 
 app.filter('offset', function() {
-  return function(input, start) {
-    start = parseInt(start, 10);
-    return input.slice(start);
+  return function(input, position, itemsPerPage) {
+    if (input && input.length) {
+      position = parseInt(position);
+      if (position === 0) {
+        position = 1;
+      }
+      return input.slice(position - 1 , itemsPerPage + 1);
+    } else {
+      return [];
+    }
+
   };
 });
 

@@ -195,56 +195,15 @@ locations.controller('FeedbackController', ['$scope', 'LocationService', '$state
 }]);
 locations.directive('pagination', [function(){
     function link(scope, element, attrs){
-      scope.limit = 10;
-      var currentPage = 0,
-          targetPageNo = 0;
-      var args = {
-        qry:{
-          options: {},
-          callback: function(r){
-            // are we going to the next page?
-            if(targetPageNo > currentPage) {
-              currentPage++;
-            } else
-            //are we heading to the previous page?
-            if (targetPageNo < currentPage) {
-              currentPage--;
-            }
-            scope.currentPage = currentPage;
-          }
-        }
-      };
 
-      $('button.prevbtn', element).on('click', function(e){
-        if(currentPage <= 0) return false;
-        targetPageNo = currentPage - 1;
-        args.qry.options.page = targetPageNo;
-        args.qry.options.rpp = scope.limit;
-        scope.pageTo(args);
-      });
-      $('button.nextbtn', element).on('click', function(e){
-        targetPageNo = currentPage + 1;
-        args.qry.options.page = targetPageNo;
-        args.qry.options.rpp = scope.limit;
-        scope.pageTo(args);
-      });
-
-      scope.pagelimit = function(limit){
-        args.qry.options.page = targetPageNo;
-        args.qry.options.rpp = limit;
-        scope.pageTo(args);
-
-        //   {pageNo: scope.pageno, limit: limit, cb: function(r){
-        //   if(r) scope.limit = limit; q`123456832
-        // }});
-      };
     }
     return {
       link: link,
-      scope: {
-        pageTo: '&'
-      },
-      templateUrl: '/templates/pagination.jade'
+      templateUrl: '/templates/pagination.jade',
+      scope:{
+        items:'=',
+        'control': '='
+      }
     };
   }]);
 locations.filter('author_field', function () {

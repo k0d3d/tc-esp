@@ -81,3 +81,8 @@ services.factory('StatsService', ['$resource', function ($resource) {
     listType: '@listType',
   });
 }]);
+
+services.factory('POUCH', [function () {
+  var db = new PouchDB('dbname');
+  return db;
+}])
