@@ -117,7 +117,7 @@ app.controller('main', ['$scope', 'requests', function ($scope, requests) {
 
   $scope.pagination_config.offset = 0;
   $scope.pagination_config.currentPage = 1;
-  $scope.pagination_config.itemsPerPage =5;
+  $scope.pagination_config.itemsPerPage = 10;
 
  $scope.pagination_config.prevPage = function() {
     if ($scope.pagination_config.currentPage > 0) {

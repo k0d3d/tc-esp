@@ -7,18 +7,22 @@ button.btn.btn-success.prevbtn(ng-click="control.prevPage()", ng-disabled="contr
     span.caret
   div.dropdown-menu.alt-text(role="menu", style="text-transform: capitalize;z-index: 99999; width: 250px;")
     form.form-horizonatal
-      .form-group
-        label 10 per page
-        input(type="radio",ng-model="control.itemsPerPage" value="5")
-      .form-group
-        label 20 per page
-        input(type="radio",ng-model="control.itemsPerPage" value="10")
-      .form-group
-        label 50 per page
-        input(type="radio",ng-model="control.itemsPerPage" value="50")
-      .form-group
-        label 100 per page
-        input(type="radio",ng-model="control.itemsPerPage" value="100")
+      .radio
+        label
+          input(type="radio",ng-model="control.itemsPerPage" value="10")
+          | 10/page
+      .radio
+        label
+          input(type="radio",ng-model="control.itemsPerPage" value="20")
+          | 20/page
+      .radio
+        label
+          input(type="radio",ng-model="control.itemsPerPage" value="50")
+          | 50/page
+      .radio
+        label
+          input(type="radio",ng-model="control.itemsPerPage" value="100")
+          | 100/page
 
 button.btn.btn-success.nextbtn(ng-click="control.nextPage(items)", ng-disabled="nextPageDisabled(items)")
   | Next

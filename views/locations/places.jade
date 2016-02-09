@@ -21,7 +21,7 @@
                 .form-group
                   input#top-search.form-control(type='text', name='qry', ng-model="qry.name" placeholder='Quick Search')
             .col-md-4
-              pagination.animation-dare(page-to="turnPage(qry)")
+              pagination.animation-dare.pull-right(items="places_list", control="pagination_config")
         .clearfix
 
         .table-responsive
@@ -47,7 +47,7 @@
                 th Added On
                 th.text-center(style='width: 150px;')
             tbody
-              tr(ng-repeat="place in places_list")
+              tr(ng-repeat="place in places_list | offset: pagination_config.currentPage:pagination_config.itemsPerPage | limitTo: pagination_config.itemsPerPage")
                 td.text-center
                   input#checkbox1-1(type='checkbox', name='checkbox1-1')
                 td.text-center

@@ -6,8 +6,6 @@ locations.controller('ActivitiesController', [
   'api_config',
   function ($scope, FeedbackService, api_config) {
   $scope._viewOptions = {
-    page: 0,
-    rpp: 10,
     listType: 'feedbacks',
   };
   $scope.CDN_URL = api_config.CDN_URL;
@@ -58,8 +56,6 @@ locations.controller('LocationController', [
     Q
     ) {
   $scope._viewOptions = {
-    page: 0,
-    rpp: 10,
     listType: 'list_all_locations'
     // entry_type: $stateParams.entry_type
   };
@@ -162,8 +158,6 @@ locations.controller('LocationController', [
 }]);
 locations.controller('LocationPageController', ['$scope', 'LocationService', '$stateParams', function ($scope, LocationService, $stateParams) {
   $scope._viewOptions = {
-    page: 0,
-    rpp: 20,
     locationId: $stateParams.locationId,
     listType: 'activity'
   };
@@ -177,8 +171,6 @@ locations.controller('LocationPageController', ['$scope', 'LocationService', '$s
 }]);
 locations.controller('FeedbackController', ['$scope', 'LocationService', '$stateParams', function ($scope, LocationService, $stateParams) {
   $scope._viewOptions = {
-    page: 0,
-    rpp: 20,
     locationId: $stateParams.locationId,
     listType: 'checkin',
     cid: $stateParams.checkinId
