@@ -8,16 +8,21 @@
         | Feedback
         br
         small {{one_checkin_feedback[0].checkInId.checkInTime | date:'medium'}}
-        button.btn.btn-alt.btn-xs.btn-primary Export to Excel
-        button.btn.btn-alt.btn-xs.btn-link.btn-default(disabled, style="border: none;color: #000;") Query by:
-        button.btn.btn-alt.btn-xs.btn-default Location
-        button.btn.btn-alt.btn-xs.btn-default Time Period
-        button.btn.btn-alt.btn-xs.btn-default Activity Type
+        a.btn.btn-alt.btn-xs.btn-primary(href="/resource/locations/activity/export") Export to Excel
+
 
   // END Contacts Header
   // Main Row
   .row
     .block
+      .table-options.clearfix
+        .row
+          .col-md-8
+            form.navbar-form-custom(role='search')
+              .form-group
+                input#top-search.form-control(type='text', name='qry', ng-model="search" placeholder='Quick Search')
+          .col-md-4
+            pagination.animation-dare.pull-right(page-to="turnPage(qry)")
       .table-responsive
         table#general-table.table.table-hover.table-vcenter.feedback-grid()
           thead
@@ -29,7 +34,7 @@
               th.lighter Response Time
               //- th.lighter Response
           tbody
-            tr(ng-repeat="fd in all_feedback | orderBy: '-dateTriggered'")
+            tr(ng-repeat="fd in all_feedback | orderBy: '-dateTriggered' | filter: search | offset: currentPage*itemsPerPage | limitTo: itemsPerPage")
               td
                 p(style="margin-bottom: 0;") <strong>{{fd.questions}}</strong>
                 span Feedback - {{fd.checkInId._id | shortenId}} at {{fd.locationId.name}}, <span>{{fd.locationId.address}}</span> <span style="color:#1bbae1">{{fd.checkInId.checkInTime | moment}}</span>
@@ -65,7 +70,3 @@
 
               td
                 span(response-time="fd") {{fd.timeUpdated | moment}}
-
-          tfoot
-            pagination.pull-right(page-to="turnPage")
-            div.clearfix

@@ -15,12 +15,14 @@
     .col-md-8
       .block
         .table-options.clearfix
-          pagination.pull-right.animation-dare(page-to="turnPage(qry)")
-          .btn-group.btn-group-sm.pull-left(data-toggle='buttons')
+          .row
+            .col-md-8
               form.navbar-form-custom(role='search', ng-submit="submit_search(qry)")
                 .form-group
                   input#top-search.form-control(type='text', name='qry', ng-model="qry.name" placeholder='Quick Search')
-          .clearfix
+            .col-md-4
+              pagination.animation-dare(page-to="turnPage(qry)")
+        .clearfix
 
         .table-responsive
           //
@@ -62,13 +64,8 @@
                 td.text-center
               tr
                 td
-        .table-options.clearfix
-          pagination.pull-right.animation-dare(page-to="turnPage(qry)")
-          .btn-group.btn-group-sm.pull-left(data-toggle='buttons')
-              form.navbar-form-custom(role='search', ng-submit="submit_search(qry)")
-                .form-group
-                  input#top-search.form-control(type='text', name='qry.name', ng-model="qry.name" placeholder='Quick Search..')
-          .clearfix
+
+        .clearfix
 
     .col-md-4
       .block

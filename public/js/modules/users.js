@@ -1,9 +1,5 @@
 var users = angular.module('users', []);
-users.controller('authentication', ['$scope', 'requests', function ($scope, requests) {
-  $scope.do_logout = function do_logout () {
-    requests.logout();
-  };
-}]);
+
 users.controller('UserController', ['$scope', 'UserService', function ($scope, UserService) {
   $scope._viewOptions = {
     page: 0,
@@ -16,6 +12,22 @@ users.controller('UserController', ['$scope', 'UserService', function ($scope, U
   .then(function (response) {
     $scope.users_list =  response;
   });
+
+  $scope.update_user = function update_user (data) {
+    var user = new UserService();
+    for (var q in data) {
+      user[q] = data[q];
+    }
+    user.$update();
+  };
+
+  $scope.add_new_user = function add_new_user (data) {
+    var user = new UserService();
+    for (var q in data) {
+      user[q] = data[q];
+    }
+    user.$save();
+  };
 
   $scope.manageUser = function (user) {
     $scope.isInView = user;

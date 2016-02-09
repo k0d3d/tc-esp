@@ -54,15 +54,15 @@
           .col-sm-6.col-lg-4(ng-repeat="user in users_list")
             .widget
               .widget-simple
-                a(href='page_ready_user_profile.html')
+                a(href='')
                   img.widget-image.img-circle.pull-left.animation-fadeIn(src='img/placeholders/avatars/avatar2.jpg', alt='avatar')
                 h4.widget-content.text-right
-                  a(href='page_ready_user_profile.html')
+                  a(href='', ng-click="manageUser(user)")
                     strong {{user.firstname || 'None'}} {{user.lastname || 'None'}}
                   br
                   span.btn-group
-                    a.btn.btn-xs.btn-default(href='javascript:void(0)', data-toggle='tooltip', title='Phone Number') {{user.phoneNumber}}
-                    a.btn.btn-xs.btn-primary(href='javascript:void(0)', data-toggle='tooltip', title='Edit', ng-click="manageUser(user)")
+                    a.btn.btn-xs.btn-default(href='', data-toggle='tooltip', title='Phone Number') {{user.phoneNumber}}
+                    a.btn.btn-xs.btn-primary(href='', data-toggle='tooltip', title='Edit', ng-click="manageUser(user)")
                       i.fa.fa-pencil
           // END Contact Widget
 
@@ -75,14 +75,14 @@
         // Edit Contact Title
         .block-title
           .block-options.pull-right
-            a.btn.btn-sm.btn-alt.btn-danger.enable-tooltip(href='javascript:void(0)', data-toggle='block-hide', title='Remove')
+            a.btn.btn-sm.btn-alt.btn-danger.enable-tooltip(href='', data-toggle='block-hide', title='Remove')
               i.fa.fa-times
           h2
             i.fa.fa-pencil
-            |  John Doe
+            |  Edit
         // END Edit Contact Title
         // Edit Contact Content
-        form.form-bordered(ng-submit="")
+        form.form-bordered(ng-submit="update_user(isInView)")
           .form-group
             label.control-label
               img.img-circle(src='img/placeholders/avatars/avatar2.jpg', alt='avatar')
@@ -106,8 +106,11 @@
             label.control-label(for='edit-contact-phone') Phone
             input#edit-contact-phone.form-control(type='text', name='edit-contact-phone', placeholder='(000) 000-0000', ng-model="isInView.phoneNumber")
           .form-group
-            label.control-label(for='edit-contact-mobile') Mobile
-            input#edit-contact-mobile.form-control(type='text', name='edit-contact-mobile', placeholder='Enter Mobile Number..')
+            label.control-label(for='edit-contact-address') User Group
+            select.form-control(name="user-group", ng-model="isInView.user_type")
+              option(value="admin") Admin
+              option(value="client") Client
+              option(value="user") Mobile User
           .form-group
             label.control-label(for='edit-contact-address') Last Seen At
             p#edit-contact-address.form-control-static {{isInView.lastSeenAt.coords[0]}},  {{isInView.lastSeenAt.coords[1]}}
@@ -119,6 +122,52 @@
               button.btn.btn-sm.btn-primary(type='submit')
                 i.fa.fa-check
                 |  Save Changes
+
+        // Add Contact Content
+        br
+        // Edit Contact Title
+        .block-title
+          .block-options.pull-right
+            a.btn.btn-sm.btn-alt.btn-danger.enable-tooltip(href='', data-toggle='block-hide', title='Remove')
+              i.fa.fa-times
+          h2
+            i.fa.fa-pencil
+            |  Add new user
+        form.form-bordered(ng-submit="add_new_user(newuserform)")
+          .form-group
+            label.control-label
+              img.img-circle(src='img/placeholders/avatars/avatar2.jpg', alt='avatar')
+            .col-xs-9
+              i.fa.fa-fw.fa-upload
+              a(href='javascript:void(0)') Upload New Avatar
+              br
+              br
+          .form-group
+            label.control-label(for='edit-contact-name') First Name
+            input#edit-contact-name.form-control(type='text', name='edit-contact-name', placeholder='Full Name..', ng-model="newuserform.firstname")
+            label.control-label(for='edit-contact-name') Last Name
+            input#edit-contact-name.form-control(type='text', name='edit-contact-name', placeholder='Last Name..', ng-model="newuserform.lastname")
+          .form-group
+            label.control-label(for='edit-contact-email') Email
+            input#edit-contact-email.form-control(type='email', name='edit-contact-email', placeholder='Enter Email..', ng-model="newuserform.email")
+          .form-group
+            label.control-label(for='edit-contact-phone') Phone
+            input#edit-contact-phone.form-control(type='text', name='edit-contact-phone', placeholder='(000) 000-0000', ng-model="newuserform.phoneNumber")
+          .form-group
+            label.control-label(for='edit-contact-address') User Group
+            select.form-control(name="user-group", ng-model="newuserform.user_type")
+              option(value="admin") Admin
+              option(value="client") Client
+              option(value="user") Mobile User
+          .form-group
+            label.control-label(for='edit-contact-address') Password
+            input#contact-password.form-control(type='password', name='contact-mobile', placeholder='password..', ng-model="newuserform.password")
+          .form-group.form-actions
+              button.btn.btn-sm.btn-primary(type='submit')
+                i.fa.fa-check
+                |  Save Changes
+
+
         // END Edit Contact Content
       // END Edit Contact Block
 

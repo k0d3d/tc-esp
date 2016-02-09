@@ -25,7 +25,11 @@
               | Stored Locations
         li
           a(ui-sref="locations({'entry_type': 'user'})")
-            | User Locations
+            | Your Locations
+        if user.isAdmin
+          li
+            a(ui-sref="users")
+              | Users
         li
           a(href="", ng-click="do_logout()")
             i.gi.gi-exit.sidebar-nav-icon

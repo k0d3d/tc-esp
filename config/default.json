@@ -43,7 +43,9 @@
         "redirectUrl": "/auth_callback",
         "endpoints" : {
             "users" : {
-                "query_all" : "/api/v2/users"
+                "query_all" : "/api/v2/users",
+                "update_user" : "/api/v2/users/%s",
+                "add_new_user" : "/api/v2/users"
             },
             "stats" : {
                 "query_all": "/api/v2/stats",

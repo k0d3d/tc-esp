@@ -17,17 +17,17 @@ services.factory('UserService', ['$resource', function ($resource) {
   //     return $http.get('/resource/users');
   //   }
   // };
-  return $resource('/resource/users/:user', {
-    user: '@userId',
-    page: '@page',
-    rpp: '@rpp',
-    q: 'q'
-  }, {
-    update:{
-      method:'PUT',
-      isArray: true
-    },
-  });
+  return $resource('/resource/users/:_id', {
+      _id: '@_id',
+      page: '@page',
+      rpp: '@rpp',
+      scope: 'PROFILE'
+    }, {
+      'update': {
+        method: 'PUT'
+      }
+    }
+  );
 }]);
 services.factory('WardenService', ['$http', function ($http) {
 

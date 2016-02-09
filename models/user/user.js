@@ -34,7 +34,7 @@ var UserSchema = new Schema({
     email: {type: String, trim: true, unique: true, sparse: true, required: true},
     username: {type: String, trim: true, unique: true, sparse: true},
     password: String,
-    type: { type: String, default: 'user' },
+    user_type: { type: String, default: 'user' },
     password_reset_token: { type: String},
     /*
     loggin and audit

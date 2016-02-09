@@ -49,6 +49,7 @@
     "grunt-cli": "latest",
     "hashids": "1.0.1",
     "jade": "latest",
+    "json-csv": "^1.2.0",
     "jsonwebtoken": "latest",
     "less": "~1.5.1",
     "lingua": "latest",
