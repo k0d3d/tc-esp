@@ -6,9 +6,12 @@
     .sidebar-content
       // User Info
       .sidebar-section.sidebar-user.clearfix
-        .sidebar-user-avatar
+        .sidebar-user-avatar(style="margin-left: 0px;")
           a(href='')
             img(src='img/tag-logo.png', alt='avatar')
+        .sidebar-user-avatar(style="margin-left: 13px;")
+          a(href='')
+            img(src='img/#{user.avatar_url}', alt='avatar')
 
 
       // Sidebar Navigation
@@ -30,6 +33,10 @@
           li
             a(ui-sref="users")
               | Users
+        li
+          a(href="", ng-click="do_logout()")
+            i.gi.gi-exit.sidebar-nav-icon
+            | Support tickets
         li
           a(href="", ng-click="do_logout()")
             i.gi.gi-exit.sidebar-nav-icon
