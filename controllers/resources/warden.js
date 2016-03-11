@@ -48,7 +48,6 @@ module.exports = function (resource) {
       json: true
     }, function (err, resp, bd) {
       console.log(err);
-      console.log(bd);
       if (err) {
         next(err);
       }

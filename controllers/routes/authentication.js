@@ -163,12 +163,11 @@ module.exports = function (app, passport) {
 
         newUser.create(saveNewClientUser)
         .then(function(user) {
-
           req.login({
             userId: user._id,
             clientKey: clientKey,
             userEmail: userEmail,
-            accessToken: user.accessToken
+            accessToken: user.accessToken,
           }, function (err) {
              if (err) {
                return next(err);

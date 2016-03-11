@@ -5,7 +5,6 @@ var
     util = require('util');
 
 var add_set_request = function (request, accessToken, config) {
-  console.log(accessToken);
   return request.defaults({
       headers: {
         'Authorization' : 'Bearer ' + accessToken

@@ -6,6 +6,9 @@ services.factory('requests', ['$http', function ($http) {
         .then(function () {
             window.location = '/login';
         });
+    },
+    getMe: function getMe () {
+      return $http.get('/resource/users/me');
     }
   };
 }]);

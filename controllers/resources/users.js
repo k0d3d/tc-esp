@@ -80,4 +80,26 @@ module.exports = function (resource) {
     });
   });
 
+  resource.route('/users/me')
+  .get(function (req, res, next) {
+    var all_users_request = request.defaults({
+      headers: {
+        'Authorization' : 'Bearer ' + req.user.accessToken
+      },
+      baseUrl: config.tagChiefOAuth.server
+    });
+    all_users_request.get({
+      url: util.format(config.tagChiefOAuth.endpoints.users.me),
+    }, function (err, resp, bd) {
+      if (err) {
+        next(err);
+      }
+      if (resp.statusCode < 400) {
+        res.json(JSON.parse(bd));
+      } else {
+        res.status(resp.statusCode);
+      }
+    });
+  });
+
 };

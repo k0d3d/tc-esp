@@ -7,6 +7,7 @@
 module.exports = function (app, ensureLoggedIn) {  // home route
   app.get('*', function(req, res, next) {
     // if its admin, we can choose.
+    // console.log(req.user);
     if (req.user && (req.user.userEmail === 'super.user@tagchief.com' || req.user.userEmail === 'michael.rhema@gmail.com')) {
       req.user.isAdmin = true;
     }

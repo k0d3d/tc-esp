@@ -11,7 +11,7 @@
             img(src='img/tag-logo.png', alt='avatar')
         .sidebar-user-avatar(style="margin-left: 13px;")
           a(href='')
-            img(src='img/#{user.avatar_url}', alt='avatar')
+            img(ng-src='{{_user.photo}}', alt='avatar')
 
 
       // Sidebar Navigation
@@ -35,13 +35,17 @@
               | Users
         li
           a(href="", ng-click="do_logout()")
-            i.gi.gi-exit.sidebar-nav-icon
             | Support tickets
-        li
-          a(href="", ng-click="do_logout()")
-            i.gi.gi-exit.sidebar-nav-icon
-            | Logout
 
+      .sidebar-section.sidebar-user.clearfix
+        ul.sidebar-nav
+          li
+            p
+              strong {{_user.firstname}} <br>
+              em {{_user.email}}
+            a(href="", ng-click="do_logout()")
+              i.gi.gi-exit.sidebar-nav-icon
+              | Logout
       // END Sidebar Notifications
     // END Sidebar Content
   // END Wrapper for scrolling functionality

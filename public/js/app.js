@@ -9,6 +9,7 @@ var app = angular.module('tagChiefStatsApp', [
   'tc.stats.ng',
   'GoogleMapsInitializer',
   'tc.config.ng',
+  'cgNotify'
   ]);
 
 
@@ -16,7 +17,8 @@ app.config([
   '$stateProvider',
   '$urlRouterProvider',
   '$httpProvider',
-  function ($stateProvider, $urlRouterProvider, $httpProvider){
+  'httpWatchman',
+  function ($stateProvider, $urlRouterProvider, $httpProvider, hm){
     $stateProvider
     .state('location', {
       url: '/locations/:locationId',
@@ -74,37 +76,7 @@ app.config([
 
     $urlRouterProvider.otherwise('/activities');
 
-    $httpProvider.interceptors.push(['$q', 'api_config', '$rootScope', function ($q, api_config, $rootScope) {
-        return {
-            'request': function (config) {
-              $rootScope.$broadcast('app-is-requesting', true);
-               if (config.url.indexOf('/resource/') > -1 ) {
-                  config.url = api_config.CONSUMER_API_URL + '' + config.url;
-                  return config || $q.when(config);
-                } else {
-                 return config || $q.when(config);
-                }
-            },
-            'response': function (resp) {
-                $rootScope.$broadcast('app-is-requesting', false);
-                // appBootStrap.isRequesting = false;
-                 return resp || $q.when(resp);
-            },
-            // optional method
-           'responseError': function(rejection) {
-              // do something on error
-              $rootScope.$broadcast('app-is-requesting', false);
-              return $q.reject(rejection);
-            },
-            // optional method
-           'requestError': function(rejection) {
-              // do something on error
-              $rootScope.$broadcast('app-is-requesting', false);
-              return $q.reject(rejection);
-            }
-
-        };
-    }]);
+    $httpProvider.interceptors.push(hm);
 }]);
 
 
@@ -112,6 +84,11 @@ app.controller('main', ['$scope', 'requests', function ($scope, requests) {
   $scope.do_logout = function do_logout () {
     requests.logout();
   };
+
+  requests.getMe()
+  .then(function(user){
+    $scope._user = user.data;
+  });
 
   $scope.pagination_config = {};
 
@@ -178,3 +155,69 @@ app.directive('pageContent', [function () {
   };
 }]);
 
+app.factory('httpWatchman',
+
+      [
+      '$q',
+      'api_config',
+      '$rootScope',
+      'notify',
+      function ($q, api_config, $rootScope, notify) {
+        var pending_alert;
+        return {
+            'request': function (config) {
+              $rootScope.$broadcast('app-is-requesting', true);
+               if (config.url.indexOf('/resource/') > -1 ) {
+                  // config.url = api_config.CONSUMER_API_URL + '' + config.url;
+                  pending_alert = notify({
+                    message:'Requesting',
+                    templateUrl:'/angular-notify.html',
+                    duration: 0,
+                    classes: 'alert-info'
+                  } );
+                  console.log(config.url);
+                  return config || $q.when(config);
+                } else {
+                 return config || $q.when(config);
+                }
+            },
+            'response': function (resp) {
+                $rootScope.$broadcast('app-is-requesting', false);
+                if(pending_alert) {
+                  pending_alert.close();
+                }
+                notify({
+                    message:'Done',
+                    templateUrl:'/angular-notify.html',
+                    duration: 3000,
+                    classes: 'alert-success'
+                } );
+                // appBootStrap.isRequesting = false;
+                 return resp || $q.when(resp);
+            },
+            // optional method
+            'responseError': function(rejection) {
+              // do something on error
+              $rootScope.$broadcast('app-is-requesting', false);
+              notify({
+                    message:'Something went wrong.',
+                    templateUrl:'/angular-notify.html',
+                    duration: 3000,
+                    classes: 'alert-danger'
+                } );
+              return $q.reject(rejection);
+            },
+            // optional method
+            'requestError': function(rejection) {
+              // do something on error
+              notify({
+                    message:'Something went wrong.',
+                    templateUrl:'/angular-notify.html',
+                    duration: 3000,
+                    classes: 'alert-danger'
+                } );
+              $rootScope.$broadcast('app-is-requesting', false);
+              return $q.reject(rejection);
+            }
+        };
+}]);
