@@ -80,7 +80,7 @@ module.exports = function (resource) {
       baseUrl: config.tagChiefOAuth.server
     });
     all_locations_request.get({
-      url: config.tagChiefOAuth.endpoints.feedback.query_all,
+      url: util.format(config.tagChiefOAuth.endpoints.feedback.query_all),
       qs: req.query,
       json: true
     }, function (err, resp, bd) {

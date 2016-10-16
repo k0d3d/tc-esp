@@ -166,10 +166,8 @@ function afterResourceFilesLoad(mongooseConnection, redis_client) {
 
     //pass in the app config params in to locals
     app.use(function(req, res, next) {
-
         res.locals.app = config.app;
         next();
-
     });
 
     // our router

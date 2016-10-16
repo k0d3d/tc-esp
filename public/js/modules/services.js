@@ -68,11 +68,11 @@ services.factory('LocationService', ['$resource', function ($resource) {
 }]);
 services.factory('FeedbackService', ['$resource', function ($resource) {
 
-  return $resource('/resource/feedback', {
+  return $resource('/resource/feedback/:locationId', {
     page: '@page',
     rpp: '@rpp',
     q: 'q',
-    listType: '@listType',
+    listType: '@listType'
   });
 }]);
 services.factory('QtnService', ['$resource', function ($resource) {
