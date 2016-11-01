@@ -112,6 +112,7 @@ module.exports = function (app, passport) {
           } else {
 
             //store in session for later
+            console.log(csBody)
             req.session.userClientData = csBody;
             req.session.userClientData.userEmail = userEmail;
 
